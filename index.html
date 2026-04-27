@@ -2,7 +2,10 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0c0a09" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title>Tractatus — Quán Bar Trò Chuyện & Suy Nghĩ | Thảo Điền, TP.HCM</title>
 <meta name="description" content="Tractatus — quán bar cocktail và rượu vang ở Thảo Điền, TP.HCM. Nhạc jazz, sách, cờ vua và những cuộc trò chuyện ý nghĩa." />
 
@@ -95,9 +98,10 @@
   .pip.closed{background:#9a7878;animation:none;box-shadow:none}
 
   /* Form */
-  .field{background:rgba(243,236,222,.04);border:1px solid rgba(201,169,106,.25);color:#f3ecde;transition:border-color .25s ease,background .25s ease}
+  .field{background:rgba(243,236,222,.04);border:1px solid rgba(201,169,106,.25);color:#f3ecde;transition:border-color .25s ease,background .25s ease;-webkit-appearance:none;appearance:none;border-radius:0}
   .field:focus{outline:none;border-color:#c9a96a;background:rgba(243,236,222,.06)}
   .field::placeholder{color:rgba(243,236,222,.45)}
+  select.field{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a96a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
 
   /* Grain */
   .grain{position:relative}
@@ -116,8 +120,18 @@
   .lang-btn:not(.active){color:rgba(243,236,222,.4)}
 
   /* Mobile drawer */
-  #mobileMenu{position:fixed;inset:0;background:rgba(12,10,9,.97);backdrop-filter:blur(8px);z-index:60;opacity:0;pointer-events:none;transition:opacity .4s ease}
+  #mobileMenu{position:fixed;inset:0;background:rgba(12,10,9,.97);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:60;opacity:0;pointer-events:none;transition:opacity .4s ease}
   #mobileMenu.open{opacity:1;pointer-events:auto}
+
+  /* Form: prevent iOS auto-zoom on focus (needs 16px) */
+  .field{font-size:1rem;-webkit-appearance:none}
+
+  /* Gallery captions always visible on touch devices */
+  @media(hover:none){.gallery-item .cap{opacity:1;transform:none}}
+
+  /* Safe area insets (iPhone notch / home bar) */
+  .fixed-bottom-safe{bottom:calc(1.5rem + env(safe-area-inset-bottom))}
+  header{padding-top:env(safe-area-inset-top)}
 </style>
 </head>
 
@@ -178,12 +192,16 @@
       <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMobileMenu()">EN</button>
     </div>
     <a href="#contact" class="mt-2 inline-flex items-center gap-2 border border-gold text-gold px-8 py-3 text-xs uppercase tracking-widest-2" data-i18n="nav.reserve">Đặt Bàn</a>
+    <div class="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-widest-2 text-gold/75">
+      <span id="openPipMobile" class="pip"></span>
+      <span id="openLabelMobile" data-i18n="status.open"></span>
+    </div>
   </nav>
 </div>
 
 
 <!-- ════ HERO ════ -->
-<section id="home" class="hero-bg relative min-h-screen flex items-center justify-center text-center px-6">
+<section id="home" class="hero-bg relative min-h-screen flex items-center justify-center text-center px-6" style="min-height:100dvh">
   <div class="max-w-4xl">
     <p class="text-gold uppercase tracking-widest-3 text-[10px] md:text-xs mb-8 rise rise-delay-1">
       <i class="fa-solid fa-star text-[8px] mr-2 align-middle"></i>
@@ -562,7 +580,7 @@
       <div class="divider"></div>
     </div>
 
-    <div class="mt-16 grid grid-cols-12 grid-rows-4 gap-3 md:gap-5 auto-rows-[150px] md:auto-rows-[200px]">
+    <div class="mt-16 grid grid-cols-12 grid-rows-4 gap-2 md:gap-5 auto-rows-[140px] md:auto-rows-[210px]">
 
       <div class="gallery-item reveal col-span-12 md:col-span-7 row-span-2">
         <img src="images/exterior.jpg" alt="Cửa vào Tractatus" class="w-full h-full object-cover" loading="lazy">
@@ -794,7 +812,7 @@
 
 <!-- Floating CTA -->
 <a href="#contact" id="floatBtn"
-   class="pulse-gold fixed bottom-6 right-6 z-40 bg-gold text-ink px-5 py-3 text-[10px] uppercase tracking-widest-2 font-medium shadow-2xl hover:bg-goldsoft transition-colors flex items-center gap-2">
+   class="pulse-gold fixed-bottom-safe fixed right-6 z-40 bg-gold text-ink px-5 py-3 text-[10px] uppercase tracking-widest-2 font-medium shadow-2xl hover:bg-goldsoft transition-colors flex items-center gap-2">
   <i class="fa-regular fa-bookmark"></i>
   <span data-i18n="float.btn">Đặt Bàn</span>
 </a>
@@ -1021,8 +1039,12 @@ function updateOpenStatus() {
 
   const pip = document.getElementById('openPip');
   const lbl = document.getElementById('openLabel');
+  const pipM = document.getElementById('openPipMobile');
+  const lblM = document.getElementById('openLabelMobile');
+  const statusText = T[currentLang][open ? 'status.open' : 'status.closed'];
   pip.classList.toggle('closed', !open);
-  lbl.textContent = T[currentLang][open ? 'status.open' : 'status.closed'];
+  lbl.textContent = statusText;
+  if (pipM) { pipM.classList.toggle('closed', !open); lblM.textContent = statusText; }
 }
 
 /* ─── Mobile menu ─── */
@@ -1090,11 +1112,20 @@ async function handleReservation(e) {
   status.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+/* ─── Hide float btn when iOS keyboard is open ─── */
+const floatBtn = document.getElementById('floatBtn');
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', () => {
+    const shrunk = window.visualViewport.height < window.innerHeight * 0.75;
+    floatBtn.style.display = shrunk ? 'none' : '';
+  });
+}
+
 /* ─── Init ─── */
 document.getElementById('year').textContent = new Date().getFullYear();
 const di = document.querySelector('input[name="date"]');
 if (di) di.setAttribute('min', new Date().toISOString().split('T')[0]);
-setLang(currentLang); // apply saved or default language on load
+setLang(currentLang);
 updateOpenStatus();
 setInterval(updateOpenStatus, 60_000);
 </script>
