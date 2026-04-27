@@ -34,7 +34,7 @@ Sections in order, each anchored by `id` and linked from the nav: `#home` (hero)
 
 ## Images
 
-All photography is local in [images/](images/) — no CDN fallbacks. Seven files, each with a specific role:
+All photography is local in [images/](images/) — no CDN fallbacks. Eight files, each with a specific role:
 
 | File | Where it appears |
 |---|---|
@@ -45,6 +45,7 @@ All photography is local in [images/](images/) — no CDN fallbacks. Seven files
 | `chess.jpg` | Gallery |
 | `piano.jpg` | Gallery |
 | `courtyard.jpg` | Gallery |
+| `books.jpg` | Gallery full-width bottom row (menus on table, red ambient light) |
 
 `exterior.jpg` and `bottles.jpg` are referenced from CSS `background-image: url(...)` rules in the `<style>` block (hero-bg, quote-bg). The other five are `<img src>` references in the about + gallery sections. If a file is renamed or replaced, update both the file on disk **and** the references in the HTML.
 
