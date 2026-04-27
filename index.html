@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tractatus — A Bar for Conversation and Thought | Thao Dien, Ho Chi Minh City</title>
+<meta name="description" content="Tractatus is an intimate cocktail and wine bar in Thao Dien, Ho Chi Minh City. Crafted drinks, vinyl jazz, books and quiet conversation." />
+
+<!-- Tailwind via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Cormorant Garamond (serif) + Inter (sans) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:      '#0c0a09',
+          coal:     '#15110f',
+          burgundy: '#5b1a1f',
+          wine:     '#3a1114',
+          rose:     '#a05a55',
+          gold:     '#c9a96a',
+          goldsoft: '#dcc190',
+          cream:    '#f3ecde',
+          mist:     '#bfb6a3'
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif']
+        },
+        letterSpacing: {
+          'widest-2': '0.32em',
+          'widest-3': '0.45em'
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #0c0a09;
+    color: #f3ecde;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, .serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: 0.005em;
+  }
+
+  /* ───── Scroll progress bar ───── */
+  #scrollProgress {
+    position: fixed; top: 0; left: 0;
+    height: 2px; width: 0;
+    background: linear-gradient(90deg, #c9a96a, #dcc190);
+    z-index: 100;
+    transition: width 80ms linear;
+  }
+
+  /* ───── Hero ───── */
+  /* Tractatus street entrance at dusk — Lambrosso tuk-tuk + neon Wittgenstein sign. */
+  .hero-bg {
+    background-image:
+      linear-gradient(180deg, rgba(12,10,9,0.40) 0%, rgba(12,10,9,0.65) 55%, rgba(12,10,9,1) 100%),
+      url('images/exterior.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-title { font-size: clamp(4rem, 14vw, 10rem); line-height: 0.92; letter-spacing: -0.005em; }
+  .vline { width:1px; height:64px; background:linear-gradient(180deg, transparent, #c9a96a, transparent); }
+  @keyframes riseIn { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+  .rise { animation: riseIn 1.2s ease both; }
+  .rise-delay-1 { animation-delay: 0.15s; }
+  .rise-delay-2 { animation-delay: 0.35s; }
+  .rise-delay-3 { animation-delay: 0.55s; }
+  .rise-delay-4 { animation-delay: 0.75s; }
+
+  /* ───── Dividers ───── */
+  .divider {
+    width: 64px; height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a96a, transparent);
+    margin: 1.25rem auto;
+  }
+  .divider-left {
+    width: 56px; height: 1px;
+    background: linear-gradient(90deg, #c9a96a, transparent);
+    margin: 1rem 0;
+  }
+
+  /* ───── Reveal-on-scroll ───── */
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.1s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ───── Menu rows: dotted leader + index numerals ───── */
+  .menu-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 0.85rem;
+  }
+  .menu-row .leader {
+    border-bottom: 1px dotted rgba(201,169,106,0.35);
+    transform: translateY(-4px);
+  }
+  .menu-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: rgba(201,169,106,0.55);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    min-width: 2ch;
+  }
+  .signature-tag {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 1px 7px;
+    border: 1px solid rgba(201,169,106,0.5);
+    color: #c9a96a;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    transform: translateY(-3px);
+  }
+
+  /* ───── Gallery ───── */
+  .gallery-item { overflow: hidden; position: relative; }
+  .gallery-item img {
+    transition: transform 1s ease, filter 1s ease;
+    filter: brightness(0.85) saturate(0.95);
+  }
+  .gallery-item:hover img { transform: scale(1.07); filter: brightness(1) saturate(1); }
+  .gallery-item .cap {
+    position: absolute; left:0; right:0; bottom:0;
+    padding: 1rem 1.25rem;
+    color: #f3ecde;
+    background: linear-gradient(180deg, transparent, rgba(12,10,9,0.85));
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; font-style: italic;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .gallery-item:hover .cap { opacity: 1; transform: none; }
+
+  /* ───── Floating CTA: gold pulse ───── */
+  @keyframes softpulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,106,0.45); }
+    50%      { box-shadow: 0 0 0 14px rgba(201,169,106,0); }
+  }
+  .pulse-gold { animation: softpulse 2.6s infinite; }
+
+  /* ───── Nav link underline ───── */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content:''; position:absolute; left:0; bottom:-6px;
+    width:0; height:1px; background:#c9a96a; transition: width .35s ease;
+  }
+  .nav-link:hover::after { width:100%; }
+
+  /* ───── "Open now" pip ───── */
+  @keyframes pip {
+    0%,100% { box-shadow: 0 0 0 0 rgba(120, 200, 120, 0.55); }
+    50%     { box-shadow: 0 0 0 6px rgba(120, 200, 120, 0); }
+  }
+  .pip { width:7px; height:7px; border-radius:50%; background:#7fcb7f; animation: pip 2.2s infinite; display:inline-block; }
+  .pip.closed { background:#9a7878; animation:none; box-shadow:none; }
+
+  /* ───── Form fields ───── */
+  .field {
+    background: rgba(243,236,222,0.04);
+    border: 1px solid rgba(201,169,106,0.25);
+    color: #f3ecde;
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .field:focus {
+    outline: none;
+    border-color: #c9a96a;
+    background: rgba(243,236,222,0.06);
+  }
+  .field::placeholder { color: rgba(243,236,222,0.45); }
+
+  /* ───── Sectional grain texture ───── */
+  .grain { position: relative; }
+  .grain::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(201,169,106,0.05) 1px, transparent 1px);
+    background-size: 3px 3px; pointer-events: none; opacity: 0.4;
+  }
+
+  /* ───── Quote banner background ───── */
+  .quote-bg {
+    background-image:
+      linear-gradient(180deg, rgba(12,10,9,0.82), rgba(12,10,9,0.94)),
+      url('images/bottles.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  @media (max-width: 768px) {
+    .quote-bg { background-attachment: scroll; }
+  }
+
+  /* ───── House facts strip ───── */
+  .facts-strip {
+    border-top: 1px solid rgba(201,169,106,0.18);
+    border-bottom: 1px solid rgba(201,169,106,0.18);
+    background: rgba(255,255,255,0.015);
+  }
+
+  /* ───── Mobile drawer (full-screen) ───── */
+  #mobileMenu {
+    position: fixed; inset: 0;
+    background: rgba(12,10,9,0.97);
+    backdrop-filter: blur(8px);
+    z-index: 60;
+    opacity: 0; pointer-events: none;
+    transition: opacity .4s ease;
+  }
+  #mobileMenu.open { opacity: 1; pointer-events: auto; }
+</style>
+</head>
+
+<body class="bg-ink text-cream">
+
+<!-- Scroll progress bar -->
+<div id="scrollProgress" aria-hidden="true"></div>
+
+
+<!-- ════════════════ NAV ════════════════ -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between gap-4">
+
+    <a href="#home" class="flex items-baseline gap-3">
+      <span class="font-serif text-2xl md:text-3xl tracking-wide text-cream">tractatus</span>
+      <span class="hidden md:inline-flex items-center gap-2 text-[10px] uppercase tracking-widest-2 text-gold/85">
+        <span id="openPip" class="pip"></span>
+        <span id="openLabel">Open now</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9 text-[11px] uppercase tracking-widest-2 text-cream/80">
+      <a href="#about"   class="nav-link hover:text-gold">About</a>
+      <a href="#menu"    class="nav-link hover:text-gold">Menu</a>
+      <a href="#events"  class="nav-link hover:text-gold">Evenings</a>
+      <a href="#gallery" class="nav-link hover:text-gold">Gallery</a>
+      <a href="#visit"   class="nav-link hover:text-gold">Visit</a>
+    </nav>
+
+    <a href="#contact" class="hidden lg:inline-flex items-center gap-2 border border-gold text-gold px-5 py-2 text-[10px] uppercase tracking-widest-2 hover:bg-gold hover:text-ink transition-colors">
+      <i class="fa-regular fa-bookmark text-[11px]"></i> Reserve
+    </a>
+
+    <button id="menuBtn" class="lg:hidden text-cream text-2xl" aria-label="Open menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile full-screen menu -->
+<div id="mobileMenu" class="lg:hidden">
+  <button id="menuClose" class="absolute top-6 right-6 text-cream text-3xl" aria-label="Close menu">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <nav class="h-full flex flex-col items-center justify-center gap-8 text-center">
+    <a href="#about"   class="font-serif text-3xl text-cream hover:text-gold">About</a>
+    <a href="#menu"    class="font-serif text-3xl text-cream hover:text-gold">Menu</a>
+    <a href="#events"  class="font-serif text-3xl text-cream hover:text-gold">Evenings</a>
+    <a href="#gallery" class="font-serif text-3xl text-cream hover:text-gold">Gallery</a>
+    <a href="#visit"   class="font-serif text-3xl text-cream hover:text-gold">Visit</a>
+    <a href="#contact" class="mt-4 inline-flex items-center gap-2 border border-gold text-gold px-8 py-3 text-xs uppercase tracking-widest-2">
+      <i class="fa-regular fa-bookmark"></i> Reserve a Table
+    </a>
+  </nav>
+</div>
+
+
+<!-- ════════════════ HERO ════════════════ -->
+<section id="home" class="hero-bg relative min-h-screen flex items-center justify-center text-center px-6">
+  <div class="max-w-4xl">
+    <p class="text-gold uppercase tracking-widest-3 text-[10px] md:text-xs mb-8 rise rise-delay-1">
+      <i class="fa-solid fa-star text-[8px] mr-2 align-middle"></i>
+      Thao Dien · Ho Chi Minh City
+      <i class="fa-solid fa-star text-[8px] ml-2 align-middle"></i>
+    </p>
+
+    <h1 class="hero-title font-serif text-cream rise rise-delay-2">
+      Tracta<span class="italic font-light">tu</span>s
+    </h1>
+
+    <div class="vline mx-auto my-7 rise rise-delay-3"></div>
+
+    <p class="font-serif italic text-xl md:text-2xl text-cream/90 mb-2 rise rise-delay-3">
+      A bar for conversation and thought.
+    </p>
+    <p class="text-cream/45 text-[11px] uppercase tracking-widest-2 mb-12 rise rise-delay-4">
+      Cocktails · Wine · Vinyl Jazz · Est. MMXXIII
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center rise rise-delay-4">
+      <a href="#contact"
+         class="inline-flex items-center justify-center gap-2 bg-gold text-ink px-9 py-3.5 uppercase tracking-widest-2 text-[10px] font-medium hover:bg-goldsoft transition-colors">
+        <i class="fa-regular fa-bookmark"></i> Reserve a Table
+      </a>
+      <a href="#menu"
+         class="inline-flex items-center justify-center gap-2 border border-cream/40 text-cream px-9 py-3.5 uppercase tracking-widest-2 text-[10px] font-medium hover:border-gold hover:text-gold transition-colors">
+        <i class="fa-solid fa-wine-glass"></i> View the Menu
+      </a>
+    </div>
+  </div>
+
+  <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/80 text-[10px] uppercase tracking-widest-2 animate-pulse">
+    <span class="block mb-2">Scroll</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </a>
+</section>
+
+
+<!-- ════════════════ HOUSE FACTS STRIP ════════════════ -->
+<section class="facts-strip">
+  <div class="max-w-6xl mx-auto px-6 py-7 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div class="reveal">
+      <p class="font-serif text-3xl text-gold leading-none">II</p>
+      <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2">Years of Pours</p>
+    </div>
+    <div class="reveal">
+      <p class="font-serif text-3xl text-gold leading-none">50<span class="text-cream/40">+</span></p>
+      <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2">Wines on the List</p>
+    </div>
+    <div class="reveal">
+      <p class="font-serif text-3xl text-gold leading-none">17:00</p>
+      <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2">Doors Open</p>
+    </div>
+    <div class="reveal">
+      <p class="font-serif text-3xl text-gold leading-none">∞</p>
+      <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2">Conversations Begun</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ ABOUT ════════════════ -->
+<section id="about" class="grain relative py-24 md:py-36 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-14 items-center">
+
+    <div class="md:col-span-6 reveal">
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-5">— Our Story</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">
+        A hidden room<br/>
+        for the <span class="italic font-light">curious</span> mind.
+      </h2>
+      <div class="divider-left"></div>
+
+      <p class="text-cream/80 leading-relaxed mb-5 text-lg font-light">
+        Tucked down a quiet lane in Thao Dien, <span class="text-gold">Tractatus</span> is a small,
+        intentional room where meaningful conversations flow as smoothly as our cocktails and wines.
+        Inspired by Wittgenstein's <em class="italic">Tractatus Logico-Philosophicus</em>,
+        we built a place for thinkers, dreamers, and old friends meeting again.
+      </p>
+      <p class="text-cream/65 leading-relaxed font-light">
+        Soft amber light, draped fabrics, walls of books and a quiet upright piano —
+        a deliberate refuge from the noise of the city. Sit close. Talk slowly. Stay a while.
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-2.5">
+        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2">Cocktails</span>
+        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2">Old World Wine</span>
+        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2">Vinyl Jazz</span>
+        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2">Books &amp; Piano</span>
+      </div>
+    </div>
+
+    <div class="md:col-span-6 reveal relative">
+      <div class="aspect-[4/5] overflow-hidden">
+        <img src="images/bar-interior.jpg"
+             alt="Tractatus interior — long wooden bar, draped ceiling, KAWAI piano"
+             class="w-full h-full object-cover shadow-2xl">
+      </div>
+      <!-- Floating quote card -->
+      <div class="absolute -bottom-7 -left-4 md:-left-10 hidden md:block bg-burgundy/95 px-7 py-6 border-l-2 border-gold max-w-xs">
+        <p class="font-serif italic text-cream text-lg leading-snug">
+          "Whereof one cannot speak, thereof one must be silent."
+        </p>
+        <p class="text-gold/90 text-[10px] uppercase tracking-widest-2 mt-3">— L. Wittgenstein</p>
+      </div>
+      <!-- Decorative serial -->
+      <p class="hidden md:block absolute -right-3 top-3 font-serif italic text-gold/60 text-sm rotate-90 origin-top-right tracking-widest-2">
+        N°.13 · Đặng Tiến Đông
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════ QUOTE BANNER ════════════════ -->
+<section class="quote-bg py-32 md:py-44 px-6 text-center">
+  <div class="reveal max-w-3xl mx-auto">
+    <i class="fa-solid fa-quote-left text-gold text-2xl mb-7"></i>
+    <p class="font-serif italic text-3xl md:text-5xl text-cream leading-snug">
+      The limits of my language<br class="hidden md:block"/>
+      mean the limits of my world.
+    </p>
+    <div class="divider"></div>
+    <p class="text-gold/85 uppercase tracking-widest-2 text-[10px]">Ludwig Wittgenstein, 1922</p>
+  </div>
+</section>
+
+
+<!-- ════════════════ MENU ════════════════ -->
+<section id="menu" class="grain relative py-24 md:py-36 px-6 bg-coal">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center reveal">
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4">— The Menu</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">A considered list.</h2>
+      <p class="text-cream/65 max-w-xl mx-auto mt-6 font-light">
+        Each pour is chosen with intention. Spirits, vines and small plates to keep the conversation going.
+      </p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="mt-16 grid lg:grid-cols-2 gap-x-16 gap-y-20">
+
+      <!-- ──── Signature Cocktails ──── -->
+      <div class="reveal">
+        <div class="flex items-end justify-between mb-2">
+          <h3 class="font-serif text-3xl md:text-4xl text-gold">Signature Cocktails</h3>
+          <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">I.</span>
+        </div>
+        <p class="text-cream/55 text-sm italic mb-8">Drinks named after ideas worth arguing about.</p>
+
+        <div class="space-y-7">
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">01</span>
+              <p class="font-serif text-xl text-cream">
+                Logico-Philosophicus<span class="signature-tag">Signature</span>
+              </p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">280,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Mezcal, Aperol, smoked grapefruit, tonka bean syrup.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">02</span>
+              <p class="font-serif text-xl text-cream">The Silent Truth</p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">260,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Aged rum, oolong tea, vanilla, bitter orange peel.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">03</span>
+              <p class="font-serif text-xl text-cream">Saigon Negroni</p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">240,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Gin infused with kumquat, Campari, sweet vermouth.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">04</span>
+              <p class="font-serif text-xl text-cream">Cogito</p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">270,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Espresso, cognac, cacao bitters, salted cream.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">05</span>
+              <p class="font-serif text-xl text-cream">Apothecary N°.7<span class="signature-tag">House Pick</span></p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">290,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Rye whiskey, fig leaf cordial, Angostura, oak smoke.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ──── Wine ──── -->
+      <div class="reveal">
+        <div class="flex items-end justify-between mb-2">
+          <h3 class="font-serif text-3xl md:text-4xl text-gold">From the Cellar</h3>
+          <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">II.</span>
+        </div>
+        <p class="text-cream/55 text-sm italic mb-8">A small, opinionated list — by glass and by bottle.</p>
+
+        <div class="space-y-7">
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">06</span>
+              <p class="font-serif text-xl text-cream">Côtes du Rhône, FR <span class="text-cream/45 text-sm">· Glass</span></p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">220,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Grenache-Syrah. Black pepper, plum, garrigue.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">07</span>
+              <p class="font-serif text-xl text-cream">Chianti Classico, IT <span class="text-cream/45 text-sm">· Bottle</span></p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">1,250,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Sangiovese, sour cherry, leather, Tuscan sun.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">08</span>
+              <p class="font-serif text-xl text-cream">Albariño, Rías Baixas <span class="text-cream/45 text-sm">· Glass</span></p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">210,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Crisp, saline, white peach. Atlantic in a glass.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">09</span>
+              <p class="font-serif text-xl text-cream">Pinot Noir, Willamette <span class="text-cream/45 text-sm">· Bottle</span></p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">1,580,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Forest floor, dark berries, silk-fine tannin.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">10</span>
+              <p class="font-serif text-xl text-cream">Champagne Brut, NV <span class="text-cream/45 text-sm">· Glass</span></p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">320,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Brioche, green apple, fine persistent bead.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ──── Spirits ──── -->
+      <div class="reveal">
+        <div class="flex items-end justify-between mb-2">
+          <h3 class="font-serif text-3xl md:text-4xl text-gold">Spirits, Neat</h3>
+          <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">III.</span>
+        </div>
+        <p class="text-cream/55 text-sm italic mb-8">Served in heavy crystal. As they should be.</p>
+
+        <div class="space-y-7">
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">11</span>
+              <p class="font-serif text-xl text-cream">Yamazaki 12 Year</p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">450,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Japanese single malt. Honey, mizunara oak, dried fruit.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">12</span>
+              <p class="font-serif text-xl text-cream">Lagavulin 16 Year</p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">420,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Islay peat, sea spray, deep smoke, long finish.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">13</span>
+              <p class="font-serif text-xl text-cream">Hennessy XO</p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">480,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Cocoa, candied orange, leather, velvet finish.</p>
+          </div>
+
+          <div>
+            <div class="menu-row">
+              <span class="menu-num">14</span>
+              <p class="font-serif text-xl text-cream">Del Maguey Vida Mezcal</p>
+              <span class="leader"></span>
+              <p class="font-serif text-lg text-gold">260,000₫</p>
+            </div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8">Smoke, agave, white pepper. A slow conversation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ──── Without the Spirit + Light Bites ──── -->
+      <div class="reveal space-y-14">
+
+        <div>
+          <div class="flex items-end justify-between mb-2">
+            <h3 class="font-serif text-3xl md:text-4xl text-gold">Without the Spirit</h3>
+            <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">IV.</span>
+          </div>
+          <p class="text-cream/55 text-sm italic mb-8">Crafted zero-proof drinks — equally considered.</p>
+
+          <div class="space-y-7">
+            <div>
+              <div class="menu-row">
+                <span class="menu-num">15</span>
+                <p class="font-serif text-xl text-cream">Garden of Forking Paths</p>
+                <span class="leader"></span>
+                <p class="font-serif text-lg text-gold">160,000₫</p>
+              </div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8">Verjus, basil, cucumber, elderflower tonic.</p>
+            </div>
+
+            <div>
+              <div class="menu-row">
+                <span class="menu-num">16</span>
+                <p class="font-serif text-xl text-cream">Quiet Hours</p>
+                <span class="leader"></span>
+                <p class="font-serif text-lg text-gold">150,000₫</p>
+              </div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8">Cold-brew tonic, vanilla, citrus oil, soda.</p>
+            </div>
+
+            <div>
+              <div class="menu-row">
+                <span class="menu-num">17</span>
+                <p class="font-serif text-xl text-cream">Saigon Soda</p>
+                <span class="leader"></span>
+                <p class="font-serif text-lg text-gold">140,000₫</p>
+              </div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8">House syrup of kumquat &amp; lemongrass, soda water.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-end justify-between mb-2">
+            <h3 class="font-serif text-3xl md:text-4xl text-gold">Light Bites</h3>
+            <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">V.</span>
+          </div>
+          <p class="text-cream/55 text-sm italic mb-8">Small things to share between sentences.</p>
+
+          <div class="space-y-7">
+            <div>
+              <div class="menu-row">
+                <span class="menu-num">18</span>
+                <p class="font-serif text-xl text-cream">Cheese &amp; Charcuterie Board</p>
+                <span class="leader"></span>
+                <p class="font-serif text-lg text-gold">390,000₫</p>
+              </div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8">Aged comté, brie, prosciutto, fig jam, sourdough.</p>
+            </div>
+
+            <div>
+              <div class="menu-row">
+                <span class="menu-num">19</span>
+                <p class="font-serif text-xl text-cream">Truffle Burrata</p>
+                <span class="leader"></span>
+                <p class="font-serif text-lg text-gold">280,000₫</p>
+              </div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8">Burrata, truffle honey, toasted pistachio, olive oil.</p>
+            </div>
+
+            <div>
+              <div class="menu-row">
+                <span class="menu-num">20</span>
+                <p class="font-serif text-xl text-cream">Smoked Almonds &amp; Olives</p>
+                <span class="leader"></span>
+                <p class="font-serif text-lg text-gold">120,000₫</p>
+              </div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8">Marcona almonds, Castelvetrano olives, sea salt.</p>
+            </div>
+
+            <div>
+              <div class="menu-row">
+                <span class="menu-num">21</span>
+                <p class="font-serif text-xl text-cream">Dark Chocolate Tasting</p>
+                <span class="leader"></span>
+                <p class="font-serif text-lg text-gold">180,000₫</p>
+              </div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8">Single-origin Vietnamese cacao, three expressions.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <p class="text-center text-cream/50 text-[10px] uppercase tracking-widest-2 mt-20">
+      All prices in VND · Subject to 5% service charge &amp; VAT
+    </p>
+  </div>
+</section>
+
+
+<!-- ════════════════ EVENINGS ════════════════ -->
+<section id="events" class="grain relative py-24 md:py-36 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center reveal">
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4">— The Evenings</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">Slow nights, well spent.</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-3 gap-6">
+
+      <div class="reveal bg-coal/60 border border-gold/15 p-9 hover:border-gold/45 hover:bg-coal/80 transition-all duration-500 group">
+        <i class="fa-solid fa-music text-gold text-3xl mb-6 group-hover:scale-110 transition-transform"></i>
+        <p class="text-gold/70 text-[10px] uppercase tracking-widest-2 mb-3">N°. I</p>
+        <h3 class="font-serif text-3xl text-cream mb-3">Jazz Nights</h3>
+        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light">
+          Live trio every Thursday and Saturday. Standards, bossa, and a little blue.
+        </p>
+        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2">Thu &amp; Sat · 21:00</p>
+      </div>
+
+      <div class="reveal bg-coal/60 border border-gold/15 p-9 hover:border-gold/45 hover:bg-coal/80 transition-all duration-500 group">
+        <i class="fa-solid fa-chess-knight text-gold text-3xl mb-6 group-hover:scale-110 transition-transform"></i>
+        <p class="text-gold/70 text-[10px] uppercase tracking-widest-2 mb-3">N°. II</p>
+        <h3 class="font-serif text-3xl text-cream mb-3">Books &amp; Games</h3>
+        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light">
+          A wall of well-worn books. Chess, Go, backgammon. Order a drink, lose track of time.
+        </p>
+        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2">Every night</p>
+      </div>
+
+      <div class="reveal bg-coal/60 border border-gold/15 p-9 hover:border-gold/45 hover:bg-coal/80 transition-all duration-500 group">
+        <i class="fa-solid fa-comments text-gold text-3xl mb-6 group-hover:scale-110 transition-transform"></i>
+        <p class="text-gold/70 text-[10px] uppercase tracking-widest-2 mb-3">N°. III</p>
+        <h3 class="font-serif text-3xl text-cream mb-3">Salon Sundays</h3>
+        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light">
+          Once a month: a guest, a topic, a glass of wine. Philosophy, cinema, design.
+        </p>
+        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2">Last Sun · 19:00</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ GALLERY ════════════════ -->
+<section id="gallery" class="py-24 md:py-36 px-6 bg-coal">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center reveal">
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4">— The Room</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">Glances inside.</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Asymmetric editorial grid (12 col, 3 row) -->
+    <div class="mt-16 grid grid-cols-12 grid-rows-3 gap-3 md:gap-5 auto-rows-[150px] md:auto-rows-[200px]">
+
+      <!-- Feature: the iconic street entrance, spans 2 rows -->
+      <div class="gallery-item reveal col-span-12 md:col-span-7 row-span-2">
+        <img src="images/exterior.jpg"
+             alt="Tractatus street entrance with vintage Lambrosso and neon Wittgenstein sign"
+             class="w-full h-full object-cover" loading="lazy">
+        <p class="cap">N°.13 Đặng Tiến Đông — the entrance.</p>
+      </div>
+
+      <!-- Top-right: bar interior wide shot -->
+      <div class="gallery-item reveal col-span-6 md:col-span-5">
+        <img src="images/bar-interior.jpg"
+             alt="The bar — long wooden counter, draped ceiling, piano"
+             class="w-full h-full object-cover" loading="lazy">
+        <p class="cap">The room — draped in red and purple.</p>
+      </div>
+
+      <!-- Mid-right: bartender at work -->
+      <div class="gallery-item reveal col-span-6 md:col-span-5">
+        <img src="images/bartender.jpg"
+             alt="Bartender stirring a cocktail in a coupe glass"
+             class="w-full h-full object-cover" loading="lazy">
+        <p class="cap">A spoon, a glass, a quiet moment.</p>
+      </div>
+
+      <!-- Bottom row: chess, piano, bottles, courtyard -->
+      <div class="gallery-item reveal col-span-6 md:col-span-3">
+        <img src="images/chess.jpg"
+             alt="Chess board with Bombay Sapphire bottle"
+             class="w-full h-full object-cover" loading="lazy">
+        <p class="cap">A late-night opening.</p>
+      </div>
+
+      <div class="gallery-item reveal col-span-6 md:col-span-3">
+        <img src="images/piano.jpg"
+             alt="KAWAI upright piano and bookshelf with Wittgenstein's Tractatus"
+             class="w-full h-full object-cover" loading="lazy">
+        <p class="cap">The reading corner.</p>
+      </div>
+
+      <div class="gallery-item reveal col-span-6 md:col-span-3">
+        <img src="images/bottles.jpg"
+             alt="Liquor bottles arranged on a sun-lit sill"
+             class="w-full h-full object-cover" loading="lazy">
+        <p class="cap">From the cellar.</p>
+      </div>
+
+      <div class="gallery-item reveal col-span-6 md:col-span-3">
+        <img src="images/courtyard.jpg"
+             alt="Outdoor courtyard at dusk with plumeria tree"
+             class="w-full h-full object-cover" loading="lazy">
+        <p class="cap">The courtyard, after dusk.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ VISIT ════════════════ -->
+<section id="visit" class="grain relative py-24 md:py-36 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-stretch">
+
+    <div class="reveal h-[420px] md:h-auto min-h-[440px] border border-gold/20 overflow-hidden">
+      <iframe
+        title="Tractatus Location"
+        src="https://www.bing.com/maps/embed?h=600&w=800&cp=10.802780~106.694717&lvl=18&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
+        width="100%" height="100%"
+        style="border:0; filter: grayscale(0.4) contrast(1.05) brightness(0.88);"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="reveal flex flex-col justify-center">
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-5">— Find Us</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">
+        Down a quiet lane<br/>in <span class="italic font-light">Thao Dien.</span>
+      </h2>
+      <div class="divider-left"></div>
+
+      <div class="space-y-7 mt-3">
+        <div class="flex gap-5">
+          <i class="fa-solid fa-location-dot text-gold mt-1.5"></i>
+          <div>
+            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Address</p>
+            <p class="text-cream font-serif text-lg leading-snug">
+              13 Đặng Tiến Đông, An Khánh<br/>
+              Thảo Điền, Thủ Đức, Ho Chi Minh City
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <i class="fa-regular fa-clock text-gold mt-1.5"></i>
+          <div>
+            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Opening Hours</p>
+            <ul class="text-cream font-serif text-lg space-y-1">
+              <li><span class="inline-block w-32 text-cream/60">Mon — Thu</span> 17:00 — 00:00</li>
+              <li><span class="inline-block w-32 text-cream/60">Fri — Sat</span> 17:00 — 01:00</li>
+              <li><span class="inline-block w-32 text-cream/60">Sunday</span> 18:00 — 23:00</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <i class="fa-brands fa-facebook-messenger text-gold mt-1.5"></i>
+          <div>
+            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Reservations</p>
+            <a href="https://m.me/tractatus.thaodien" target="_blank" rel="noopener" class="text-cream font-serif text-lg hover:text-gold transition-colors">
+              Message us on Facebook →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="https://maps.app.goo.gl/XMjeiyAzrbWpHHZf9" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 border border-gold text-gold px-5 py-2.5 text-[10px] uppercase tracking-widest-2 hover:bg-gold hover:text-ink transition-colors">
+          <i class="fa-solid fa-map-location-dot"></i> Google Maps
+        </a>
+        <a href="https://www.bing.com/maps?cp=10.802780~106.694717&lvl=18" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 border border-gold/50 text-gold/85 px-5 py-2.5 text-[10px] uppercase tracking-widest-2 hover:border-gold hover:text-gold transition-colors">
+          <i class="fa-solid fa-map"></i> Bing Maps
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════ RESERVATION ════════════════ -->
+<section id="contact" class="py-24 md:py-36 px-6 bg-coal grain relative">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center reveal">
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4">— Reserve a Table</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">Save your seat.</h2>
+      <p class="text-cream/65 max-w-xl mx-auto mt-6 font-light">
+        We'll send your booking directly to our Facebook Messenger and reply within the hour.
+        Parties of 5+ may be asked for a small deposit.
+      </p>
+      <div class="divider"></div>
+    </div>
+
+    <form id="reservationForm" class="reveal mt-14 grid md:grid-cols-2 gap-5"
+          onsubmit="handleReservation(event)" data-fb-page="tractatus.thaodien">
+      <div>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Name</label>
+        <input required type="text" name="name" class="field w-full px-4 py-3.5" placeholder="Your full name">
+      </div>
+      <div>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Email</label>
+        <input required type="email" name="email" class="field w-full px-4 py-3.5" placeholder="you@example.com">
+      </div>
+      <div>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Date</label>
+        <input required type="date" name="date" class="field w-full px-4 py-3.5">
+      </div>
+      <div>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Time</label>
+        <input required type="time" name="time" class="field w-full px-4 py-3.5">
+      </div>
+      <div>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Number of Guests</label>
+        <select required name="guests" class="field w-full px-4 py-3.5">
+          <option value="" class="bg-coal">Select...</option>
+          <option class="bg-coal">1 guest</option>
+          <option class="bg-coal">2 guests</option>
+          <option class="bg-coal">3 guests</option>
+          <option class="bg-coal">4 guests</option>
+          <option class="bg-coal">5 guests</option>
+          <option class="bg-coal">6 guests</option>
+          <option class="bg-coal">7+ guests</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Phone (optional)</label>
+        <input type="tel" name="phone" class="field w-full px-4 py-3.5" placeholder="+84 ...">
+      </div>
+      <div class="md:col-span-2">
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Anything we should know?</label>
+        <textarea name="message" rows="4" class="field w-full px-4 py-3.5" placeholder="Special occasions, dietary notes, seating preferences..."></textarea>
+      </div>
+
+      <div class="md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-5 mt-3">
+        <p class="text-cream/55 text-xs flex items-center gap-2">
+          <i class="fa-brands fa-facebook-messenger text-gold/85"></i>
+          Sent directly to our Messenger — typical reply within the hour.
+        </p>
+        <button type="submit"
+          class="bg-gold text-ink px-10 py-3.5 uppercase tracking-widest-2 text-[10px] font-medium hover:bg-goldsoft transition-colors w-full sm:w-auto inline-flex items-center justify-center gap-2.5">
+          <i class="fa-brands fa-facebook-messenger"></i>
+          Send via Messenger
+        </button>
+      </div>
+
+      <p id="formStatus" class="md:col-span-2 text-center text-gold/95 text-sm hidden mt-2"></p>
+    </form>
+
+    <div class="reveal mt-16 grid sm:grid-cols-3 gap-5 text-center">
+      <a href="https://m.me/tractatus.thaodien" target="_blank" rel="noopener"
+         class="border border-gold/25 hover:border-gold py-7 transition-colors group">
+        <i class="fa-brands fa-facebook-messenger text-gold text-2xl mb-2.5 block"></i>
+        <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Messenger</p>
+        <p class="font-serif text-cream group-hover:text-gold transition-colors">Chat with us</p>
+      </a>
+      <a href="https://www.facebook.com/tractatus.thaodien" target="_blank" rel="noopener"
+         class="border border-gold/25 hover:border-gold py-7 transition-colors group">
+        <i class="fa-brands fa-facebook text-gold text-2xl mb-2.5 block"></i>
+        <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Facebook</p>
+        <p class="font-serif text-cream group-hover:text-gold transition-colors">/tractatus.thaodien</p>
+      </a>
+      <a href="https://instagram.com/tractatus.bar" target="_blank" rel="noopener"
+         class="border border-gold/25 hover:border-gold py-7 transition-colors group">
+        <i class="fa-brands fa-instagram text-gold text-2xl mb-2.5 block"></i>
+        <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Instagram</p>
+        <p class="font-serif text-cream group-hover:text-gold transition-colors">@tractatus.bar</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="bg-ink border-t border-gold/15 py-14 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 items-center text-center md:text-left">
+
+    <div>
+      <p class="font-serif text-3xl text-cream">tractatus</p>
+      <p class="text-cream/50 text-[10px] uppercase tracking-widest-2 mt-1.5">A bar for conversation and thought</p>
+    </div>
+
+    <p class="text-cream/45 text-xs text-center font-light leading-relaxed">
+      "Whereof one cannot speak,<br class="hidden md:block"/>
+      thereof one must be silent."
+    </p>
+
+    <div class="flex md:justify-end justify-center gap-6 text-gold text-xl">
+      <a href="https://instagram.com/tractatus.bar" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-cream transition-colors"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/tractatus.thaodien" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-cream transition-colors"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://m.me/tractatus.thaodien" target="_blank" rel="noopener" aria-label="Messenger" class="hover:text-cream transition-colors"><i class="fa-brands fa-facebook-messenger"></i></a>
+    </div>
+  </div>
+
+  <p class="max-w-6xl mx-auto mt-10 pt-6 border-t border-gold/10 text-cream/35 text-[10px] uppercase tracking-widest-2 text-center">
+    © <span id="year"></span> Tractatus · 13 Đặng Tiến Đông, Thảo Điền · Ho Chi Minh City
+  </p>
+</footer>
+
+
+<!-- ════════════════ FLOATING BOOK BUTTON ════════════════ -->
+<a href="#contact" id="floatBtn"
+   class="pulse-gold fixed bottom-6 right-6 z-40 bg-gold text-ink px-5 py-3 text-[10px] uppercase tracking-widest-2 font-medium shadow-2xl hover:bg-goldsoft transition-colors flex items-center gap-2">
+  <i class="fa-regular fa-bookmark"></i> Book a Table
+</a>
+
+
+<script>
+  /* ─── Mobile menu ─── */
+  const menuBtn   = document.getElementById('menuBtn');
+  const menuClose = document.getElementById('menuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  /* ─── Navbar scroll state + scroll progress bar ─── */
+  const navbar = document.getElementById('navbar');
+  const progress = document.getElementById('scrollProgress');
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (y > 40) navbar.classList.add('bg-ink/85','backdrop-blur-md','border-b','border-gold/15','shadow-lg');
+    else navbar.classList.remove('bg-ink/85','backdrop-blur-md','border-b','border-gold/15','shadow-lg');
+
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = h > 0 ? (y / h * 100) + '%' : '0';
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ─── Reveal-on-scroll ─── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        // Slight stagger when multiple items appear together
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  /* ─── "Open now" indicator (Asia/Ho_Chi_Minh time, GMT+7) ─── */
+  function updateOpenStatus() {
+    // Get current time in Vietnam regardless of viewer timezone
+    const now = new Date();
+    const vn = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' }));
+    const day = vn.getDay(); // 0 Sun ... 6 Sat
+    const minutes = vn.getHours() * 60 + vn.getMinutes();
+
+    // Hours: Mon-Thu 17:00-24:00, Fri-Sat 17:00-01:00 (next day), Sun 18:00-23:00
+    let open = false;
+    if (day === 0)              open = minutes >= 18*60 && minutes < 23*60;             // Sun
+    else if (day >= 1 && day <= 4) open = minutes >= 17*60;                              // Mon–Thu (until 24:00)
+    else if (day === 5 || day === 6) open = minutes >= 17*60 || minutes < 60;            // Fri/Sat (incl. early-AM)
+
+    const pip = document.getElementById('openPip');
+    const label = document.getElementById('openLabel');
+    if (open) { pip.classList.remove('closed'); label.textContent = 'Open now'; }
+    else      { pip.classList.add('closed');    label.textContent = 'Closed — opens at 17:00'; }
+  }
+  updateOpenStatus();
+  setInterval(updateOpenStatus, 60_000);
+
+  /* ─── Reservation → copy to clipboard + open Tractatus Messenger ─── */
+  async function handleReservation(e) {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('formStatus');
+    const data = Object.fromEntries(new FormData(form).entries());
+    const fbPage = form.dataset.fbPage;
+
+    const message =
+`Hello Tractatus — I'd like to book a table.
+
+• Name: ${data.name}
+• Email: ${data.email}${data.phone ? `
+• Phone: ${data.phone}` : ''}
+• Date: ${data.date}
+• Time: ${data.time}
+• Guests: ${data.guests}${data.message ? `
+• Notes: ${data.message}` : ''}
+
+Thank you!`;
+
+    let copied = false;
+    try { await navigator.clipboard.writeText(message); copied = true; }
+    catch (_) { /* fallback below */ }
+
+    // Open Messenger to the Tractatus page
+    window.open(`https://m.me/${fbPage}`, '_blank', 'noopener');
+
+    status.classList.remove('hidden');
+    status.innerHTML = copied
+      ? `Thank you, <span class="text-gold">${data.name.split(' ')[0]}</span>. Your booking has been copied — paste it into the Messenger window we just opened and hit send.`
+      : `Messenger has opened in a new tab. <button type="button" id="copyAgain" class="underline text-gold hover:text-cream">Copy booking message</button> and paste it there.`;
+
+    if (!copied) {
+      document.getElementById('copyAgain')?.addEventListener('click', () => {
+        const ta = document.createElement('textarea');
+        ta.value = message; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); ta.remove();
+        status.innerHTML = `Copied. Paste it into the Messenger window and hit send.`;
+      });
+    }
+
+    form.reset();
+    status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  /* ─── Footer year ─── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ─── Min-date on reservation date input ─── */
+  const dateInput = document.querySelector('input[name="date"]');
+  if (dateInput) dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+</script>
+
+</body>
+</html>
