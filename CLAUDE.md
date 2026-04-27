@@ -73,3 +73,20 @@ The current placeholder is `tractatus.thaodien` — replace globally if the real
 - Google Fonts — Cormorant Garamond + Inter
 - Font Awesome 6.5.1 — `cdnjs.cloudflare.com`
 - Google Maps embed — uses the public `/maps?q=...&output=embed` form (no API key)
+
+---
+
+## Behavioral Guidelines
+
+**Think before coding.** State assumptions explicitly. If something is unclear, ask before implementing.
+
+**Minimum viable change.** No features beyond what was asked. No abstractions for single-use code. No error handling for impossible scenarios.
+
+**Surgical edits.** Don't improve adjacent code. Match existing style. Remove only what your own change made unused.
+
+**Verify.** For multi-step tasks, state a plan first:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+```
+

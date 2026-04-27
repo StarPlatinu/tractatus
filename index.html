@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tractatus — A Bar for Conversation and Thought | Thao Dien, Ho Chi Minh City</title>
-<meta name="description" content="Tractatus is an intimate cocktail and wine bar in Thao Dien, Ho Chi Minh City. Crafted drinks, vinyl jazz, books and quiet conversation." />
+<title>Tractatus — Quán Bar Trò Chuyện & Suy Nghĩ | Thảo Điền, TP.HCM</title>
+<meta name="description" content="Tractatus — quán bar cocktail và rượu vang ở Thảo Điền, TP.HCM. Nhạc jazz, sách, cờ vua và những cuộc trò chuyện ý nghĩa." />
 
-<!-- Tailwind via CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Cormorant Garamond (serif) + Inter (sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
 <script>
@@ -26,7 +21,6 @@
           coal:     '#15110f',
           burgundy: '#5b1a1f',
           wine:     '#3a1114',
-          rose:     '#a05a55',
           gold:     '#c9a96a',
           goldsoft: '#dcc190',
           cream:    '#f3ecde',
@@ -47,199 +41,91 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  body {
-    background-color: #0c0a09;
-    color: #f3ecde;
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  h1, h2, h3, h4, .serif {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    letter-spacing: 0.005em;
-  }
+  body { background-color:#0c0a09; color:#f3ecde; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  h1,h2,h3,h4,.serif { font-family:'Cormorant Garamond',Georgia,serif; letter-spacing:0.005em; }
 
-  /* ───── Scroll progress bar ───── */
-  #scrollProgress {
-    position: fixed; top: 0; left: 0;
-    height: 2px; width: 0;
-    background: linear-gradient(90deg, #c9a96a, #dcc190);
-    z-index: 100;
-    transition: width 80ms linear;
-  }
+  /* Progress bar */
+  #scrollProgress { position:fixed; top:0; left:0; height:2px; width:0; background:linear-gradient(90deg,#c9a96a,#dcc190); z-index:100; transition:width 80ms linear; }
 
-  /* ───── Hero ───── */
-  /* Tractatus street entrance at dusk — Lambrosso tuk-tuk + neon Wittgenstein sign. */
+  /* Hero */
   .hero-bg {
-    background-image:
-      linear-gradient(180deg, rgba(12,10,9,0.40) 0%, rgba(12,10,9,0.65) 55%, rgba(12,10,9,1) 100%),
-      url('images/exterior.jpg');
-    background-size: cover;
-    background-position: center;
+    background-image: linear-gradient(180deg,rgba(12,10,9,.40) 0%,rgba(12,10,9,.65) 55%,rgba(12,10,9,1) 100%), url('images/exterior.jpg');
+    background-size:cover; background-position:center;
   }
-  .hero-title { font-size: clamp(4rem, 14vw, 10rem); line-height: 0.92; letter-spacing: -0.005em; }
-  .vline { width:1px; height:64px; background:linear-gradient(180deg, transparent, #c9a96a, transparent); }
-  @keyframes riseIn { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
-  .rise { animation: riseIn 1.2s ease both; }
-  .rise-delay-1 { animation-delay: 0.15s; }
-  .rise-delay-2 { animation-delay: 0.35s; }
-  .rise-delay-3 { animation-delay: 0.55s; }
-  .rise-delay-4 { animation-delay: 0.75s; }
+  .hero-title { font-size:clamp(4rem,14vw,10rem); line-height:0.92; letter-spacing:-0.005em; }
+  .vline { width:1px; height:64px; background:linear-gradient(180deg,transparent,#c9a96a,transparent); }
+  @keyframes riseIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+  .rise{animation:riseIn 1.2s ease both}
+  .rise-delay-1{animation-delay:.15s} .rise-delay-2{animation-delay:.35s}
+  .rise-delay-3{animation-delay:.55s} .rise-delay-4{animation-delay:.75s}
 
-  /* ───── Dividers ───── */
-  .divider {
-    width: 64px; height: 1px;
-    background: linear-gradient(90deg, transparent, #c9a96a, transparent);
-    margin: 1.25rem auto;
-  }
-  .divider-left {
-    width: 56px; height: 1px;
-    background: linear-gradient(90deg, #c9a96a, transparent);
-    margin: 1rem 0;
-  }
+  /* Dividers */
+  .divider{width:64px;height:1px;background:linear-gradient(90deg,transparent,#c9a96a,transparent);margin:1.25rem auto}
+  .divider-left{width:56px;height:1px;background:linear-gradient(90deg,#c9a96a,transparent);margin:1rem 0}
 
-  /* ───── Reveal-on-scroll ───── */
-  .reveal {
-    opacity: 0; transform: translateY(36px);
-    transition: opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.1s cubic-bezier(.2,.7,.2,1);
-  }
-  .reveal.visible { opacity: 1; transform: none; }
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.visible{opacity:1;transform:none}
 
-  /* ───── Menu rows: dotted leader + index numerals ───── */
-  .menu-row {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: baseline;
-    gap: 0.85rem;
-  }
-  .menu-row .leader {
-    border-bottom: 1px dotted rgba(201,169,106,0.35);
-    transform: translateY(-4px);
-  }
-  .menu-num {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    color: rgba(201,169,106,0.55);
-    font-size: 0.95rem;
-    letter-spacing: 0.05em;
-    min-width: 2ch;
-  }
-  .signature-tag {
-    display: inline-block;
-    margin-left: 0.5rem;
-    padding: 1px 7px;
-    border: 1px solid rgba(201,169,106,0.5);
-    color: #c9a96a;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.55rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    transform: translateY(-3px);
-  }
+  /* Menu rows */
+  .menu-row{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:.85rem}
+  .menu-row .leader{border-bottom:1px dotted rgba(201,169,106,.35);transform:translateY(-4px)}
+  .menu-num{font-family:'Cormorant Garamond',Georgia,serif;color:rgba(201,169,106,.55);font-size:.95rem;letter-spacing:.05em;min-width:2ch}
+  .signature-tag{display:inline-block;margin-left:.5rem;padding:1px 7px;border:1px solid rgba(201,169,106,.5);color:#c9a96a;font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;transform:translateY(-3px)}
 
-  /* ───── Gallery ───── */
-  .gallery-item { overflow: hidden; position: relative; }
-  .gallery-item img {
-    transition: transform 1s ease, filter 1s ease;
-    filter: brightness(0.85) saturate(0.95);
-  }
-  .gallery-item:hover img { transform: scale(1.07); filter: brightness(1) saturate(1); }
-  .gallery-item .cap {
-    position: absolute; left:0; right:0; bottom:0;
-    padding: 1rem 1.25rem;
-    color: #f3ecde;
-    background: linear-gradient(180deg, transparent, rgba(12,10,9,0.85));
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.95rem; font-style: italic;
-    opacity: 0; transform: translateY(8px);
-    transition: opacity .5s ease, transform .5s ease;
-  }
-  .gallery-item:hover .cap { opacity: 1; transform: none; }
+  /* Gallery */
+  .gallery-item{overflow:hidden;position:relative}
+  .gallery-item img{transition:transform 1s ease,filter 1s ease;filter:brightness(.85) saturate(.95)}
+  .gallery-item:hover img{transform:scale(1.07);filter:brightness(1) saturate(1)}
+  .gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.25rem;color:#f3ecde;background:linear-gradient(180deg,transparent,rgba(12,10,9,.85));font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+  .gallery-item:hover .cap{opacity:1;transform:none}
 
-  /* ───── Floating CTA: gold pulse ───── */
-  @keyframes softpulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,106,0.45); }
-    50%      { box-shadow: 0 0 0 14px rgba(201,169,106,0); }
-  }
-  .pulse-gold { animation: softpulse 2.6s infinite; }
+  /* Floating CTA */
+  @keyframes softpulse{0%,100%{box-shadow:0 0 0 0 rgba(201,169,106,.45)}50%{box-shadow:0 0 0 14px rgba(201,169,106,0)}}
+  .pulse-gold{animation:softpulse 2.6s infinite}
 
-  /* ───── Nav link underline ───── */
-  .nav-link { position: relative; }
-  .nav-link::after {
-    content:''; position:absolute; left:0; bottom:-6px;
-    width:0; height:1px; background:#c9a96a; transition: width .35s ease;
-  }
-  .nav-link:hover::after { width:100%; }
+  /* Nav link */
+  .nav-link{position:relative}
+  .nav-link::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:#c9a96a;transition:width .35s ease}
+  .nav-link:hover::after{width:100%}
 
-  /* ───── "Open now" pip ───── */
-  @keyframes pip {
-    0%,100% { box-shadow: 0 0 0 0 rgba(120, 200, 120, 0.55); }
-    50%     { box-shadow: 0 0 0 6px rgba(120, 200, 120, 0); }
-  }
-  .pip { width:7px; height:7px; border-radius:50%; background:#7fcb7f; animation: pip 2.2s infinite; display:inline-block; }
-  .pip.closed { background:#9a7878; animation:none; box-shadow:none; }
+  /* Open pip */
+  @keyframes pip{0%,100%{box-shadow:0 0 0 0 rgba(120,200,120,.55)}50%{box-shadow:0 0 0 6px rgba(120,200,120,0)}}
+  .pip{width:7px;height:7px;border-radius:50%;background:#7fcb7f;animation:pip 2.2s infinite;display:inline-block}
+  .pip.closed{background:#9a7878;animation:none;box-shadow:none}
 
-  /* ───── Form fields ───── */
-  .field {
-    background: rgba(243,236,222,0.04);
-    border: 1px solid rgba(201,169,106,0.25);
-    color: #f3ecde;
-    transition: border-color .25s ease, background .25s ease;
-  }
-  .field:focus {
-    outline: none;
-    border-color: #c9a96a;
-    background: rgba(243,236,222,0.06);
-  }
-  .field::placeholder { color: rgba(243,236,222,0.45); }
+  /* Form */
+  .field{background:rgba(243,236,222,.04);border:1px solid rgba(201,169,106,.25);color:#f3ecde;transition:border-color .25s ease,background .25s ease}
+  .field:focus{outline:none;border-color:#c9a96a;background:rgba(243,236,222,.06)}
+  .field::placeholder{color:rgba(243,236,222,.45)}
 
-  /* ───── Sectional grain texture ───── */
-  .grain { position: relative; }
-  .grain::before {
-    content: ""; position: absolute; inset: 0;
-    background-image: radial-gradient(rgba(201,169,106,0.05) 1px, transparent 1px);
-    background-size: 3px 3px; pointer-events: none; opacity: 0.4;
-  }
+  /* Grain */
+  .grain{position:relative}
+  .grain::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(201,169,106,.05) 1px,transparent 1px);background-size:3px 3px;pointer-events:none;opacity:.4}
 
-  /* ───── Quote banner background ───── */
-  .quote-bg {
-    background-image:
-      linear-gradient(180deg, rgba(12,10,9,0.82), rgba(12,10,9,0.94)),
-      url('images/bottles.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-  @media (max-width: 768px) {
-    .quote-bg { background-attachment: scroll; }
-  }
+  /* Quote bg */
+  .quote-bg{background-image:linear-gradient(180deg,rgba(12,10,9,.82),rgba(12,10,9,.94)),url('images/bottles.jpg');background-size:cover;background-position:center;background-attachment:fixed}
+  @media(max-width:768px){.quote-bg{background-attachment:scroll}}
 
-  /* ───── House facts strip ───── */
-  .facts-strip {
-    border-top: 1px solid rgba(201,169,106,0.18);
-    border-bottom: 1px solid rgba(201,169,106,0.18);
-    background: rgba(255,255,255,0.015);
-  }
+  /* Facts strip */
+  .facts-strip{border-top:1px solid rgba(201,169,106,.18);border-bottom:1px solid rgba(201,169,106,.18);background:rgba(255,255,255,.015)}
 
-  /* ───── Mobile drawer (full-screen) ───── */
-  #mobileMenu {
-    position: fixed; inset: 0;
-    background: rgba(12,10,9,0.97);
-    backdrop-filter: blur(8px);
-    z-index: 60;
-    opacity: 0; pointer-events: none;
-    transition: opacity .4s ease;
-  }
-  #mobileMenu.open { opacity: 1; pointer-events: auto; }
+  /* Lang toggle */
+  .lang-btn{transition:color .2s ease}
+  .lang-btn.active{color:#c9a96a}
+  .lang-btn:not(.active){color:rgba(243,236,222,.4)}
+
+  /* Mobile drawer */
+  #mobileMenu{position:fixed;inset:0;background:rgba(12,10,9,.97);backdrop-filter:blur(8px);z-index:60;opacity:0;pointer-events:none;transition:opacity .4s ease}
+  #mobileMenu.open{opacity:1;pointer-events:auto}
 </style>
 </head>
 
 <body class="bg-ink text-cream">
-
-<!-- Scroll progress bar -->
 <div id="scrollProgress" aria-hidden="true"></div>
 
 
-<!-- ════════════════ NAV ════════════════ -->
+<!-- ════ NAV ════ -->
 <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between gap-4">
 
@@ -247,21 +133,29 @@
       <span class="font-serif text-2xl md:text-3xl tracking-wide text-cream">tractatus</span>
       <span class="hidden md:inline-flex items-center gap-2 text-[10px] uppercase tracking-widest-2 text-gold/85">
         <span id="openPip" class="pip"></span>
-        <span id="openLabel">Open now</span>
+        <span id="openLabel" data-i18n="status.open"></span>
       </span>
     </a>
 
-    <nav class="hidden lg:flex items-center gap-9 text-[11px] uppercase tracking-widest-2 text-cream/80">
-      <a href="#about"   class="nav-link hover:text-gold">About</a>
-      <a href="#menu"    class="nav-link hover:text-gold">Menu</a>
-      <a href="#events"  class="nav-link hover:text-gold">Evenings</a>
-      <a href="#gallery" class="nav-link hover:text-gold">Gallery</a>
-      <a href="#visit"   class="nav-link hover:text-gold">Visit</a>
+    <nav class="hidden lg:flex items-center gap-8 text-[11px] uppercase tracking-widest-2 text-cream/80">
+      <a href="#about"   class="nav-link hover:text-gold" data-i18n="nav.about">Về Chúng Tôi</a>
+      <a href="#menu"    class="nav-link hover:text-gold" data-i18n="nav.menu">Thực Đơn</a>
+      <a href="#events"  class="nav-link hover:text-gold" data-i18n="nav.evenings">Buổi Tối</a>
+      <a href="#gallery" class="nav-link hover:text-gold" data-i18n="nav.gallery">Thư Viện</a>
+      <a href="#visit"   class="nav-link hover:text-gold" data-i18n="nav.visit">Địa Chỉ</a>
     </nav>
 
-    <a href="#contact" class="hidden lg:inline-flex items-center gap-2 border border-gold text-gold px-5 py-2 text-[10px] uppercase tracking-widest-2 hover:bg-gold hover:text-ink transition-colors">
-      <i class="fa-regular fa-bookmark text-[11px]"></i> Reserve
-    </a>
+    <div class="hidden lg:flex items-center gap-4">
+      <!-- Language toggle -->
+      <div class="flex items-center gap-1.5 text-[10px] uppercase tracking-widest-2">
+        <button class="lang-btn active" data-lang="vi" onclick="setLang('vi')">VI</button>
+        <span class="text-cream/25">·</span>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#contact" class="inline-flex items-center gap-2 border border-gold text-gold px-5 py-2 text-[10px] uppercase tracking-widest-2 hover:bg-gold hover:text-ink transition-colors" data-i18n="nav.reserve">
+        Đặt Bàn
+      </a>
+    </div>
 
     <button id="menuBtn" class="lg:hidden text-cream text-2xl" aria-label="Open menu">
       <i class="fa-solid fa-bars"></i>
@@ -269,133 +163,104 @@
   </div>
 </header>
 
-<!-- Mobile full-screen menu -->
+<!-- Mobile menu -->
 <div id="mobileMenu" class="lg:hidden">
-  <button id="menuClose" class="absolute top-6 right-6 text-cream text-3xl" aria-label="Close menu">
-    <i class="fa-solid fa-xmark"></i>
-  </button>
-  <nav class="h-full flex flex-col items-center justify-center gap-8 text-center">
-    <a href="#about"   class="font-serif text-3xl text-cream hover:text-gold">About</a>
-    <a href="#menu"    class="font-serif text-3xl text-cream hover:text-gold">Menu</a>
-    <a href="#events"  class="font-serif text-3xl text-cream hover:text-gold">Evenings</a>
-    <a href="#gallery" class="font-serif text-3xl text-cream hover:text-gold">Gallery</a>
-    <a href="#visit"   class="font-serif text-3xl text-cream hover:text-gold">Visit</a>
-    <a href="#contact" class="mt-4 inline-flex items-center gap-2 border border-gold text-gold px-8 py-3 text-xs uppercase tracking-widest-2">
-      <i class="fa-regular fa-bookmark"></i> Reserve a Table
-    </a>
+  <button id="menuClose" class="absolute top-6 right-6 text-cream text-3xl"><i class="fa-solid fa-xmark"></i></button>
+  <nav class="h-full flex flex-col items-center justify-center gap-7 text-center">
+    <a href="#about"   class="font-serif text-3xl text-cream hover:text-gold" data-i18n="nav.about">Về Chúng Tôi</a>
+    <a href="#menu"    class="font-serif text-3xl text-cream hover:text-gold" data-i18n="nav.menu">Thực Đơn</a>
+    <a href="#events"  class="font-serif text-3xl text-cream hover:text-gold" data-i18n="nav.evenings">Buổi Tối</a>
+    <a href="#gallery" class="font-serif text-3xl text-cream hover:text-gold" data-i18n="nav.gallery">Thư Viện</a>
+    <a href="#visit"   class="font-serif text-3xl text-cream hover:text-gold" data-i18n="nav.visit">Địa Chỉ</a>
+    <div class="flex items-center gap-3 mt-2 text-sm uppercase tracking-widest-2">
+      <button class="lang-btn active" data-lang="vi" onclick="setLang('vi');closeMobileMenu()">VI</button>
+      <span class="text-cream/25">·</span>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMobileMenu()">EN</button>
+    </div>
+    <a href="#contact" class="mt-2 inline-flex items-center gap-2 border border-gold text-gold px-8 py-3 text-xs uppercase tracking-widest-2" data-i18n="nav.reserve">Đặt Bàn</a>
   </nav>
 </div>
 
 
-<!-- ════════════════ HERO ════════════════ -->
+<!-- ════ HERO ════ -->
 <section id="home" class="hero-bg relative min-h-screen flex items-center justify-center text-center px-6">
   <div class="max-w-4xl">
     <p class="text-gold uppercase tracking-widest-3 text-[10px] md:text-xs mb-8 rise rise-delay-1">
       <i class="fa-solid fa-star text-[8px] mr-2 align-middle"></i>
-      Thao Dien · Ho Chi Minh City
+      Thảo Điền · TP. Hồ Chí Minh
       <i class="fa-solid fa-star text-[8px] ml-2 align-middle"></i>
     </p>
-
     <h1 class="hero-title font-serif text-cream rise rise-delay-2">
       Tracta<span class="italic font-light">tu</span>s
     </h1>
-
     <div class="vline mx-auto my-7 rise rise-delay-3"></div>
-
-    <p class="font-serif italic text-xl md:text-2xl text-cream/90 mb-2 rise rise-delay-3">
-      A bar for conversation and thought.
+    <p class="font-serif italic text-xl md:text-2xl text-cream/90 mb-2 rise rise-delay-3" data-i18n="hero.tagline">
+      Quán bar dành cho trò chuyện và suy nghĩ.
     </p>
-    <p class="text-cream/45 text-[11px] uppercase tracking-widest-2 mb-12 rise rise-delay-4">
-      Cocktails · Wine · Vinyl Jazz · Est. MMXXIII
+    <p class="text-cream/45 text-[11px] uppercase tracking-widest-2 mb-12 rise rise-delay-4" data-i18n="hero.sub">
+      Cocktails · Rượu Vang · Nhạc Jazz · Est. MMXXIII
     </p>
-
     <div class="flex flex-col sm:flex-row gap-4 justify-center rise rise-delay-4">
-      <a href="#contact"
-         class="inline-flex items-center justify-center gap-2 bg-gold text-ink px-9 py-3.5 uppercase tracking-widest-2 text-[10px] font-medium hover:bg-goldsoft transition-colors">
-        <i class="fa-regular fa-bookmark"></i> Reserve a Table
+      <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-gold text-ink px-9 py-3.5 uppercase tracking-widest-2 text-[10px] font-medium hover:bg-goldsoft transition-colors" data-i18n="hero.cta1">
+        Đặt Bàn Ngay
       </a>
-      <a href="#menu"
-         class="inline-flex items-center justify-center gap-2 border border-cream/40 text-cream px-9 py-3.5 uppercase tracking-widest-2 text-[10px] font-medium hover:border-gold hover:text-gold transition-colors">
-        <i class="fa-solid fa-wine-glass"></i> View the Menu
+      <a href="#menu" class="inline-flex items-center justify-center gap-2 border border-cream/40 text-cream px-9 py-3.5 uppercase tracking-widest-2 text-[10px] font-medium hover:border-gold hover:text-gold transition-colors" data-i18n="hero.cta2">
+        Xem Thực Đơn
       </a>
     </div>
   </div>
-
   <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/80 text-[10px] uppercase tracking-widest-2 animate-pulse">
-    <span class="block mb-2">Scroll</span>
+    <span class="block mb-2" data-i18n="hero.scroll">Cuộn xuống</span>
     <i class="fa-solid fa-chevron-down"></i>
   </a>
 </section>
 
 
-<!-- ════════════════ HOUSE FACTS STRIP ════════════════ -->
+<!-- ════ FACTS STRIP ════ -->
 <section class="facts-strip">
   <div class="max-w-6xl mx-auto px-6 py-7 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-    <div class="reveal">
-      <p class="font-serif text-3xl text-gold leading-none">II</p>
-      <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2">Years of Pours</p>
-    </div>
-    <div class="reveal">
-      <p class="font-serif text-3xl text-gold leading-none">50<span class="text-cream/40">+</span></p>
-      <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2">Wines on the List</p>
-    </div>
-    <div class="reveal">
-      <p class="font-serif text-3xl text-gold leading-none">17:00</p>
-      <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2">Doors Open</p>
-    </div>
-    <div class="reveal">
-      <p class="font-serif text-3xl text-gold leading-none">∞</p>
-      <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2">Conversations Begun</p>
-    </div>
+    <div class="reveal"><p class="font-serif text-3xl text-gold leading-none">II</p><p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2" data-i18n="facts.years">Năm Phục Vụ</p></div>
+    <div class="reveal"><p class="font-serif text-3xl text-gold leading-none">50<span class="text-cream/40">+</span></p><p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2" data-i18n="facts.wines">Loại Rượu Vang</p></div>
+    <div class="reveal"><p class="font-serif text-3xl text-gold leading-none">17:00</p><p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2" data-i18n="facts.doors">Mở Cửa Lúc</p></div>
+    <div class="reveal"><p class="font-serif text-3xl text-gold leading-none">∞</p><p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mt-2" data-i18n="facts.convos">Cuộc Trò Chuyện</p></div>
   </div>
 </section>
 
 
-<!-- ════════════════ ABOUT ════════════════ -->
+<!-- ════ ABOUT ════ -->
 <section id="about" class="grain relative py-24 md:py-36 px-6">
   <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-14 items-center">
 
     <div class="md:col-span-6 reveal">
-      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-5">— Our Story</p>
-      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">
-        A hidden room<br/>
-        for the <span class="italic font-light">curious</span> mind.
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-5" data-i18n="about.eyebrow">— Câu Chuyện Của Chúng Tôi</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]" data-i18n-html="about.heading">
+        Một không gian ẩn<br/>dành cho tâm trí <span class="italic font-light">tò mò.</span>
       </h2>
       <div class="divider-left"></div>
-
-      <p class="text-cream/80 leading-relaxed mb-5 text-lg font-light">
-        Tucked down a quiet lane in Thao Dien, <span class="text-gold">Tractatus</span> is a small,
-        intentional room where meaningful conversations flow as smoothly as our cocktails and wines.
-        Inspired by Wittgenstein's <em class="italic">Tractatus Logico-Philosophicus</em>,
-        we built a place for thinkers, dreamers, and old friends meeting again.
+      <p class="text-cream/80 leading-relaxed mb-5 text-lg font-light" data-i18n-html="about.body1">
+        Nằm sâu trong một con hẻm yên tĩnh ở Thảo Điền, <span class="text-gold">Tractatus</span> là một không gian ẩn — nơi những cuộc trò chuyện thật sự diễn ra suôn sẻ như cocktail và rượu vang của chúng tôi. Lấy cảm hứng từ tác phẩm <em class="italic">Tractatus Logico-Philosophicus</em> của Wittgenstein, chúng tôi xây dựng nơi này cho những người suy nghĩ, những kẻ mơ mộng và những người bạn cũ gặp lại nhau.
       </p>
-      <p class="text-cream/65 leading-relaxed font-light">
-        Soft amber light, draped fabrics, walls of books and a quiet upright piano —
-        a deliberate refuge from the noise of the city. Sit close. Talk slowly. Stay a while.
+      <p class="text-cream/65 leading-relaxed font-light" data-i18n="about.body2">
+        Ánh đèn hổ phách ấm áp, những tấm vải drape đặc trưng, tủ sách và cây đàn piano yên tĩnh — một nơi trú ẩn thoát khỏi sự huyên náo của thành phố. Ngồi gần lại. Nói chuyện thật chậm. Ở lại một lúc nha.
       </p>
-
       <div class="mt-9 flex flex-wrap gap-2.5">
         <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2">Cocktails</span>
-        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2">Old World Wine</span>
-        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2">Vinyl Jazz</span>
-        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2">Books &amp; Piano</span>
+        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2" data-i18n="about.tag2">Rượu Vang Cổ Điển</span>
+        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2" data-i18n="about.tag3">Nhạc Jazz Vinyl</span>
+        <span class="border border-gold/40 text-gold/90 px-4 py-1.5 text-[10px] uppercase tracking-widest-2" data-i18n="about.tag4">Sách &amp; Đàn Piano</span>
       </div>
     </div>
 
     <div class="md:col-span-6 reveal relative">
       <div class="aspect-[4/5] overflow-hidden">
-        <img src="images/bar-interior.jpg"
-             alt="Tractatus interior — long wooden bar, draped ceiling, KAWAI piano"
-             class="w-full h-full object-cover shadow-2xl">
+        <img src="images/bar-interior.jpg" alt="Không gian bar Tractatus" class="w-full h-full object-cover shadow-2xl">
       </div>
-      <!-- Floating quote card -->
       <div class="absolute -bottom-7 -left-4 md:-left-10 hidden md:block bg-burgundy/95 px-7 py-6 border-l-2 border-gold max-w-xs">
-        <p class="font-serif italic text-cream text-lg leading-snug">
-          "Whereof one cannot speak, thereof one must be silent."
+        <p class="font-serif italic text-cream text-lg leading-snug" data-i18n="about.quote">
+          "Điều gì không thể nói bằng lời, thì hãy giữ trong im lặng."
         </p>
         <p class="text-gold/90 text-[10px] uppercase tracking-widest-2 mt-3">— L. Wittgenstein</p>
       </div>
-      <!-- Decorative serial -->
       <p class="hidden md:block absolute -right-3 top-3 font-serif italic text-gold/60 text-sm rotate-90 origin-top-right tracking-widest-2">
         N°.13 · Đặng Tiến Đông
       </p>
@@ -405,13 +270,12 @@
 </section>
 
 
-<!-- ════════════════ QUOTE BANNER ════════════════ -->
+<!-- ════ QUOTE BANNER ════ -->
 <section class="quote-bg py-32 md:py-44 px-6 text-center">
   <div class="reveal max-w-3xl mx-auto">
     <i class="fa-solid fa-quote-left text-gold text-2xl mb-7"></i>
-    <p class="font-serif italic text-3xl md:text-5xl text-cream leading-snug">
-      The limits of my language<br class="hidden md:block"/>
-      mean the limits of my world.
+    <p class="font-serif italic text-3xl md:text-5xl text-cream leading-snug" data-i18n-html="quote.text">
+      Giới hạn ngôn ngữ của tôi<br class="hidden md:block"/>cũng là giới hạn của thế giới tôi.
     </p>
     <div class="divider"></div>
     <p class="text-gold/85 uppercase tracking-widest-2 text-[10px]">Ludwig Wittgenstein, 1922</p>
@@ -419,40 +283,36 @@
 </section>
 
 
-<!-- ════════════════ MENU ════════════════ -->
+<!-- ════ MENU ════ -->
 <section id="menu" class="grain relative py-24 md:py-36 px-6 bg-coal">
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center reveal">
-      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4">— The Menu</p>
-      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">A considered list.</h2>
-      <p class="text-cream/65 max-w-xl mx-auto mt-6 font-light">
-        Each pour is chosen with intention. Spirits, vines and small plates to keep the conversation going.
-      </p>
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4" data-i18n="menu.eyebrow">— Thực Đơn</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]" data-i18n="menu.heading">Danh sách được chọn lọc.</h2>
+      <p class="text-cream/65 max-w-xl mx-auto mt-6 font-light" data-i18n="menu.sub">Mỗi ly đều được cân nhắc. Cocktail, rượu vang và đồ ăn nhẹ để cuộc trò chuyện không bao giờ dừng lại.</p>
       <div class="divider"></div>
     </div>
 
     <div class="mt-16 grid lg:grid-cols-2 gap-x-16 gap-y-20">
 
-      <!-- ──── Signature Cocktails ──── -->
+      <!-- Cocktails -->
       <div class="reveal">
         <div class="flex items-end justify-between mb-2">
-          <h3 class="font-serif text-3xl md:text-4xl text-gold">Signature Cocktails</h3>
+          <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.cocktails.title">Cocktail Đặc Trưng</h3>
           <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">I.</span>
         </div>
-        <p class="text-cream/55 text-sm italic mb-8">Drinks named after ideas worth arguing about.</p>
-
+        <p class="text-cream/55 text-sm italic mb-8" data-i18n="menu.cocktails.sub">Những thức uống đặt tên theo những ý tưởng đáng tranh luận.</p>
         <div class="space-y-7">
+
           <div>
             <div class="menu-row">
               <span class="menu-num">01</span>
-              <p class="font-serif text-xl text-cream">
-                Logico-Philosophicus<span class="signature-tag">Signature</span>
-              </p>
+              <p class="font-serif text-xl text-cream">Logico-Philosophicus<span class="signature-tag" data-i18n="tag.sig">Đặc Trưng</span></p>
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">280,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Mezcal, Aperol, smoked grapefruit, tonka bean syrup.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="c01.desc">Mezcal, Aperol, bưởi hun khói, siro hạt tonka.</p>
           </div>
 
           <div>
@@ -462,7 +322,7 @@
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">260,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Aged rum, oolong tea, vanilla, bitter orange peel.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="c02.desc">Rum ủ, trà oolong, vanilla, vỏ cam đắng.</p>
           </div>
 
           <div>
@@ -472,7 +332,7 @@
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">240,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Gin infused with kumquat, Campari, sweet vermouth.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="c03.desc">Gin ngâm quất, Campari, vermouth ngọt.</p>
           </div>
 
           <div>
@@ -482,222 +342,163 @@
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">270,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Espresso, cognac, cacao bitters, salted cream.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="c04.desc">Espresso, cognac, cacao bitters, kem muối.</p>
           </div>
 
           <div>
             <div class="menu-row">
               <span class="menu-num">05</span>
-              <p class="font-serif text-xl text-cream">Apothecary N°.7<span class="signature-tag">House Pick</span></p>
+              <p class="font-serif text-xl text-cream">Apothecary N°.7<span class="signature-tag" data-i18n="tag.house">Gợi Ý</span></p>
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">290,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Rye whiskey, fig leaf cordial, Angostura, oak smoke.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="c05.desc">Rye whiskey, siro lá sung, Angostura, khói gỗ sồi.</p>
           </div>
+
         </div>
       </div>
 
-      <!-- ──── Wine ──── -->
+      <!-- Wine -->
       <div class="reveal">
         <div class="flex items-end justify-between mb-2">
-          <h3 class="font-serif text-3xl md:text-4xl text-gold">From the Cellar</h3>
+          <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.wine.title">Từ Hầm Rượu</h3>
           <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">II.</span>
         </div>
-        <p class="text-cream/55 text-sm italic mb-8">A small, opinionated list — by glass and by bottle.</p>
-
+        <p class="text-cream/55 text-sm italic mb-8" data-i18n="menu.wine.sub">Danh sách nhỏ nhưng được chắt lọc — theo ly và theo chai.</p>
         <div class="space-y-7">
+
           <div>
             <div class="menu-row">
               <span class="menu-num">06</span>
-              <p class="font-serif text-xl text-cream">Côtes du Rhône, FR <span class="text-cream/45 text-sm">· Glass</span></p>
+              <p class="font-serif text-xl text-cream">Côtes du Rhône, FR <span class="text-cream/45 text-sm" data-i18n="wine.glass">· Ly</span></p>
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">220,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Grenache-Syrah. Black pepper, plum, garrigue.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="w06.desc">Grenache-Syrah. Tiêu đen, mận, thảo mộc miền Nam nước Pháp.</p>
           </div>
 
           <div>
             <div class="menu-row">
               <span class="menu-num">07</span>
-              <p class="font-serif text-xl text-cream">Chianti Classico, IT <span class="text-cream/45 text-sm">· Bottle</span></p>
+              <p class="font-serif text-xl text-cream">Chianti Classico, IT <span class="text-cream/45 text-sm" data-i18n="wine.bottle">· Chai</span></p>
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">1,250,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Sangiovese, sour cherry, leather, Tuscan sun.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="w07.desc">Sangiovese, anh đào chua, da thuộc, nắng Tuscany.</p>
           </div>
 
           <div>
             <div class="menu-row">
               <span class="menu-num">08</span>
-              <p class="font-serif text-xl text-cream">Albariño, Rías Baixas <span class="text-cream/45 text-sm">· Glass</span></p>
+              <p class="font-serif text-xl text-cream">Albariño, Rías Baixas <span class="text-cream/45 text-sm" data-i18n="wine.glass">· Ly</span></p>
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">210,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Crisp, saline, white peach. Atlantic in a glass.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="w08.desc">Thanh mát, vị mặn nhẹ, đào trắng. Đại Tây Dương trong từng ly.</p>
           </div>
 
           <div>
             <div class="menu-row">
               <span class="menu-num">09</span>
-              <p class="font-serif text-xl text-cream">Pinot Noir, Willamette <span class="text-cream/45 text-sm">· Bottle</span></p>
+              <p class="font-serif text-xl text-cream">Pinot Noir, Willamette <span class="text-cream/45 text-sm" data-i18n="wine.bottle">· Chai</span></p>
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">1,580,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Forest floor, dark berries, silk-fine tannin.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="w09.desc">Đất rừng, quả mọng tối, tannin mịn như lụa.</p>
           </div>
 
           <div>
             <div class="menu-row">
               <span class="menu-num">10</span>
-              <p class="font-serif text-xl text-cream">Champagne Brut, NV <span class="text-cream/45 text-sm">· Glass</span></p>
+              <p class="font-serif text-xl text-cream">Champagne Brut, NV <span class="text-cream/45 text-sm" data-i18n="wine.glass">· Ly</span></p>
               <span class="leader"></span>
               <p class="font-serif text-lg text-gold">320,000₫</p>
             </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Brioche, green apple, fine persistent bead.</p>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="w10.desc">Brioche, táo xanh, bọt bền.</p>
           </div>
+
         </div>
       </div>
 
-      <!-- ──── Spirits ──── -->
+      <!-- Spirits -->
       <div class="reveal">
         <div class="flex items-end justify-between mb-2">
-          <h3 class="font-serif text-3xl md:text-4xl text-gold">Spirits, Neat</h3>
+          <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.spirits.title">Rượu Mạnh, Nguyên Chất</h3>
           <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">III.</span>
         </div>
-        <p class="text-cream/55 text-sm italic mb-8">Served in heavy crystal. As they should be.</p>
-
+        <p class="text-cream/55 text-sm italic mb-8" data-i18n="menu.spirits.sub">Phục vụ trong ly pha lê nặng. Đúng như lẽ ra phải thế.</p>
         <div class="space-y-7">
+
           <div>
-            <div class="menu-row">
-              <span class="menu-num">11</span>
-              <p class="font-serif text-xl text-cream">Yamazaki 12 Year</p>
-              <span class="leader"></span>
-              <p class="font-serif text-lg text-gold">450,000₫</p>
-            </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Japanese single malt. Honey, mizunara oak, dried fruit.</p>
+            <div class="menu-row"><span class="menu-num">11</span><p class="font-serif text-xl text-cream">Yamazaki 12 Year</p><span class="leader"></span><p class="font-serif text-lg text-gold">450,000₫</p></div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="s11.desc">Single malt Nhật Bản. Mật ong, gỗ mizunara, trái cây sấy.</p>
           </div>
 
           <div>
-            <div class="menu-row">
-              <span class="menu-num">12</span>
-              <p class="font-serif text-xl text-cream">Lagavulin 16 Year</p>
-              <span class="leader"></span>
-              <p class="font-serif text-lg text-gold">420,000₫</p>
-            </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Islay peat, sea spray, deep smoke, long finish.</p>
+            <div class="menu-row"><span class="menu-num">12</span><p class="font-serif text-xl text-cream">Lagavulin 16 Year</p><span class="leader"></span><p class="font-serif text-lg text-gold">420,000₫</p></div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="s12.desc">Than bùn Islay, muối biển, khói sâu, hậu vị dài.</p>
           </div>
 
           <div>
-            <div class="menu-row">
-              <span class="menu-num">13</span>
-              <p class="font-serif text-xl text-cream">Hennessy XO</p>
-              <span class="leader"></span>
-              <p class="font-serif text-lg text-gold">480,000₫</p>
-            </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Cocoa, candied orange, leather, velvet finish.</p>
+            <div class="menu-row"><span class="menu-num">13</span><p class="font-serif text-xl text-cream">Hennessy XO</p><span class="leader"></span><p class="font-serif text-lg text-gold">480,000₫</p></div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="s13.desc">Cacao, cam ướp đường, da thuộc, hậu vị mượt mà.</p>
           </div>
 
           <div>
-            <div class="menu-row">
-              <span class="menu-num">14</span>
-              <p class="font-serif text-xl text-cream">Del Maguey Vida Mezcal</p>
-              <span class="leader"></span>
-              <p class="font-serif text-lg text-gold">260,000₫</p>
-            </div>
-            <p class="text-cream/65 text-sm mt-1.5 ml-8">Smoke, agave, white pepper. A slow conversation.</p>
+            <div class="menu-row"><span class="menu-num">14</span><p class="font-serif text-xl text-cream">Del Maguey Vida Mezcal</p><span class="leader"></span><p class="font-serif text-lg text-gold">260,000₫</p></div>
+            <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="s14.desc">Khói, agave, tiêu trắng. Một cuộc trò chuyện chậm rãi.</p>
           </div>
+
         </div>
       </div>
 
-      <!-- ──── Without the Spirit + Light Bites ──── -->
+      <!-- Non-alc + Bites -->
       <div class="reveal space-y-14">
 
         <div>
           <div class="flex items-end justify-between mb-2">
-            <h3 class="font-serif text-3xl md:text-4xl text-gold">Without the Spirit</h3>
+            <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.nonalc.title">Không Cồn</h3>
             <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">IV.</span>
           </div>
-          <p class="text-cream/55 text-sm italic mb-8">Crafted zero-proof drinks — equally considered.</p>
-
+          <p class="text-cream/55 text-sm italic mb-8" data-i18n="menu.nonalc.sub">Thức uống zero-proof được chế tác kỹ lưỡng — chất lượng không kém.</p>
           <div class="space-y-7">
             <div>
-              <div class="menu-row">
-                <span class="menu-num">15</span>
-                <p class="font-serif text-xl text-cream">Garden of Forking Paths</p>
-                <span class="leader"></span>
-                <p class="font-serif text-lg text-gold">160,000₫</p>
-              </div>
-              <p class="text-cream/65 text-sm mt-1.5 ml-8">Verjus, basil, cucumber, elderflower tonic.</p>
+              <div class="menu-row"><span class="menu-num">15</span><p class="font-serif text-xl text-cream">Garden of Forking Paths</p><span class="leader"></span><p class="font-serif text-lg text-gold">160,000₫</p></div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="n15.desc">Verjus, húng quế, dưa leo, tonic hoa cơm cháy.</p>
             </div>
-
             <div>
-              <div class="menu-row">
-                <span class="menu-num">16</span>
-                <p class="font-serif text-xl text-cream">Quiet Hours</p>
-                <span class="leader"></span>
-                <p class="font-serif text-lg text-gold">150,000₫</p>
-              </div>
-              <p class="text-cream/65 text-sm mt-1.5 ml-8">Cold-brew tonic, vanilla, citrus oil, soda.</p>
+              <div class="menu-row"><span class="menu-num">16</span><p class="font-serif text-xl text-cream">Quiet Hours</p><span class="leader"></span><p class="font-serif text-lg text-gold">150,000₫</p></div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="n16.desc">Tonic cold-brew, vanilla, tinh dầu citrus, soda.</p>
             </div>
-
             <div>
-              <div class="menu-row">
-                <span class="menu-num">17</span>
-                <p class="font-serif text-xl text-cream">Saigon Soda</p>
-                <span class="leader"></span>
-                <p class="font-serif text-lg text-gold">140,000₫</p>
-              </div>
-              <p class="text-cream/65 text-sm mt-1.5 ml-8">House syrup of kumquat &amp; lemongrass, soda water.</p>
+              <div class="menu-row"><span class="menu-num">17</span><p class="font-serif text-xl text-cream">Saigon Soda</p><span class="leader"></span><p class="font-serif text-lg text-gold">140,000₫</p></div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="n17.desc">Siro tự làm từ quất &amp; sả, nước soda.</p>
             </div>
           </div>
         </div>
 
         <div>
           <div class="flex items-end justify-between mb-2">
-            <h3 class="font-serif text-3xl md:text-4xl text-gold">Light Bites</h3>
+            <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.bites.title">Ăn Nhẹ</h3>
             <span class="text-cream/40 text-[10px] uppercase tracking-widest-2">V.</span>
           </div>
-          <p class="text-cream/55 text-sm italic mb-8">Small things to share between sentences.</p>
-
+          <p class="text-cream/55 text-sm italic mb-8" data-i18n="menu.bites.sub">Những thứ nhỏ để chia sẻ trong khi trò chuyện.</p>
           <div class="space-y-7">
             <div>
-              <div class="menu-row">
-                <span class="menu-num">18</span>
-                <p class="font-serif text-xl text-cream">Cheese &amp; Charcuterie Board</p>
-                <span class="leader"></span>
-                <p class="font-serif text-lg text-gold">390,000₫</p>
-              </div>
-              <p class="text-cream/65 text-sm mt-1.5 ml-8">Aged comté, brie, prosciutto, fig jam, sourdough.</p>
+              <div class="menu-row"><span class="menu-num">18</span><p class="font-serif text-xl text-cream" data-i18n="b18.name">Đĩa Phô Mai &amp; Charcuterie</p><span class="leader"></span><p class="font-serif text-lg text-gold">390,000₫</p></div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="b18.desc">Comté, brie, prosciutto, mứt sung, bánh mì sourdough.</p>
             </div>
-
             <div>
-              <div class="menu-row">
-                <span class="menu-num">19</span>
-                <p class="font-serif text-xl text-cream">Truffle Burrata</p>
-                <span class="leader"></span>
-                <p class="font-serif text-lg text-gold">280,000₫</p>
-              </div>
-              <p class="text-cream/65 text-sm mt-1.5 ml-8">Burrata, truffle honey, toasted pistachio, olive oil.</p>
+              <div class="menu-row"><span class="menu-num">19</span><p class="font-serif text-xl text-cream">Truffle Burrata</p><span class="leader"></span><p class="font-serif text-lg text-gold">280,000₫</p></div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="b19.desc">Burrata, mật ong truffle, hạt dẻ rang, dầu ô liu.</p>
             </div>
-
             <div>
-              <div class="menu-row">
-                <span class="menu-num">20</span>
-                <p class="font-serif text-xl text-cream">Smoked Almonds &amp; Olives</p>
-                <span class="leader"></span>
-                <p class="font-serif text-lg text-gold">120,000₫</p>
-              </div>
-              <p class="text-cream/65 text-sm mt-1.5 ml-8">Marcona almonds, Castelvetrano olives, sea salt.</p>
+              <div class="menu-row"><span class="menu-num">20</span><p class="font-serif text-xl text-cream" data-i18n="b20.name">Hạnh Nhân &amp; Olive</p><span class="leader"></span><p class="font-serif text-lg text-gold">120,000₫</p></div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="b20.desc">Hạnh nhân Marcona hun khói, olive Castelvetrano, muối biển.</p>
             </div>
-
             <div>
-              <div class="menu-row">
-                <span class="menu-num">21</span>
-                <p class="font-serif text-xl text-cream">Dark Chocolate Tasting</p>
-                <span class="leader"></span>
-                <p class="font-serif text-lg text-gold">180,000₫</p>
-              </div>
-              <p class="text-cream/65 text-sm mt-1.5 ml-8">Single-origin Vietnamese cacao, three expressions.</p>
+              <div class="menu-row"><span class="menu-num">21</span><p class="font-serif text-xl text-cream" data-i18n="b21.name">Thưởng Thức Chocolate Đen</p><span class="leader"></span><p class="font-serif text-lg text-gold">180,000₫</p></div>
+              <p class="text-cream/65 text-sm mt-1.5 ml-8" data-i18n="b21.desc">Cacao Việt Nam nguyên chất, ba cách thưởng thức.</p>
             </div>
           </div>
         </div>
@@ -706,53 +507,45 @@
 
     </div>
 
-    <p class="text-center text-cream/50 text-[10px] uppercase tracking-widest-2 mt-20">
-      All prices in VND · Subject to 5% service charge &amp; VAT
+    <p class="text-center text-cream/50 text-[10px] uppercase tracking-widest-2 mt-20" data-i18n="menu.note">
+      Tất cả giá tính bằng VNĐ · Chưa bao gồm 5% phí dịch vụ &amp; VAT
     </p>
   </div>
 </section>
 
 
-<!-- ════════════════ EVENINGS ════════════════ -->
+<!-- ════ EVENINGS ════ -->
 <section id="events" class="grain relative py-24 md:py-36 px-6">
   <div class="max-w-6xl mx-auto">
-
     <div class="text-center reveal">
-      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4">— The Evenings</p>
-      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">Slow nights, well spent.</h2>
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4" data-i18n="events.eyebrow">— Các Buổi Tối</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]" data-i18n="events.heading">Những đêm chậm rãi, trọn vẹn.</h2>
       <div class="divider"></div>
     </div>
-
     <div class="mt-16 grid md:grid-cols-3 gap-6">
 
       <div class="reveal bg-coal/60 border border-gold/15 p-9 hover:border-gold/45 hover:bg-coal/80 transition-all duration-500 group">
         <i class="fa-solid fa-music text-gold text-3xl mb-6 group-hover:scale-110 transition-transform"></i>
         <p class="text-gold/70 text-[10px] uppercase tracking-widest-2 mb-3">N°. I</p>
-        <h3 class="font-serif text-3xl text-cream mb-3">Jazz Nights</h3>
-        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light">
-          Live trio every Thursday and Saturday. Standards, bossa, and a little blue.
-        </p>
-        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2">Thu &amp; Sat · 21:00</p>
+        <h3 class="font-serif text-3xl text-cream mb-3" data-i18n="events.jazz.title">Đêm Nhạc Jazz</h3>
+        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light" data-i18n="events.jazz.desc">Ban nhạc trio biểu diễn mỗi thứ Năm và thứ Bảy. Nhạc tiêu chuẩn, bossa nova và một chút blues.</p>
+        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2" data-i18n="events.jazz.time">Thứ 5 &amp; 7 · 21:00</p>
       </div>
 
       <div class="reveal bg-coal/60 border border-gold/15 p-9 hover:border-gold/45 hover:bg-coal/80 transition-all duration-500 group">
         <i class="fa-solid fa-chess-knight text-gold text-3xl mb-6 group-hover:scale-110 transition-transform"></i>
         <p class="text-gold/70 text-[10px] uppercase tracking-widest-2 mb-3">N°. II</p>
-        <h3 class="font-serif text-3xl text-cream mb-3">Books &amp; Games</h3>
-        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light">
-          A wall of well-worn books. Chess, Go, backgammon. Order a drink, lose track of time.
-        </p>
-        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2">Every night</p>
+        <h3 class="font-serif text-3xl text-cream mb-3" data-i18n="events.games.title">Sách &amp; Trò Chơi</h3>
+        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light" data-i18n="events.games.desc">Một tủ sách đã qua tay nhiều người. Cờ vua, cờ vây, backgammon. Gọi thêm đồ uống, quên đi thời gian.</p>
+        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2" data-i18n="events.games.time">Mỗi tối</p>
       </div>
 
       <div class="reveal bg-coal/60 border border-gold/15 p-9 hover:border-gold/45 hover:bg-coal/80 transition-all duration-500 group">
         <i class="fa-solid fa-comments text-gold text-3xl mb-6 group-hover:scale-110 transition-transform"></i>
         <p class="text-gold/70 text-[10px] uppercase tracking-widest-2 mb-3">N°. III</p>
-        <h3 class="font-serif text-3xl text-cream mb-3">Salon Sundays</h3>
-        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light">
-          Once a month: a guest, a topic, a glass of wine. Philosophy, cinema, design.
-        </p>
-        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2">Last Sun · 19:00</p>
+        <h3 class="font-serif text-3xl text-cream mb-3" data-i18n="events.salon.title">Chủ Nhật Salon</h3>
+        <p class="text-cream/70 text-sm leading-relaxed mb-5 font-light" data-i18n="events.salon.desc">Mỗi tháng một lần: một khách mời, một chủ đề, một ly rượu. Triết học, điện ảnh, thiết kế.</p>
+        <p class="text-gold/85 text-[10px] uppercase tracking-widest-2" data-i18n="events.salon.time">CN cuối tháng · 19:00</p>
       </div>
 
     </div>
@@ -760,70 +553,50 @@
 </section>
 
 
-<!-- ════════════════ GALLERY ════════════════ -->
+<!-- ════ GALLERY ════ -->
 <section id="gallery" class="py-24 md:py-36 px-6 bg-coal">
   <div class="max-w-7xl mx-auto">
-
     <div class="text-center reveal">
-      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4">— The Room</p>
-      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">Glances inside.</h2>
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4" data-i18n="gallery.eyebrow">— Không Gian</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]" data-i18n="gallery.heading">Những khoảnh khắc bên trong.</h2>
       <div class="divider"></div>
     </div>
 
-    <!-- Asymmetric editorial grid (12 col, 3 row) -->
     <div class="mt-16 grid grid-cols-12 grid-rows-3 gap-3 md:gap-5 auto-rows-[150px] md:auto-rows-[200px]">
 
-      <!-- Feature: the iconic street entrance, spans 2 rows -->
       <div class="gallery-item reveal col-span-12 md:col-span-7 row-span-2">
-        <img src="images/exterior.jpg"
-             alt="Tractatus street entrance with vintage Lambrosso and neon Wittgenstein sign"
-             class="w-full h-full object-cover" loading="lazy">
-        <p class="cap">N°.13 Đặng Tiến Đông — the entrance.</p>
+        <img src="images/exterior.jpg" alt="Cửa vào Tractatus" class="w-full h-full object-cover" loading="lazy">
+        <p class="cap" data-i18n="cap.exterior">N°.13 Đặng Tiến Đông — cửa vào.</p>
       </div>
 
-      <!-- Top-right: bar interior wide shot -->
       <div class="gallery-item reveal col-span-6 md:col-span-5">
-        <img src="images/bar-interior.jpg"
-             alt="The bar — long wooden counter, draped ceiling, piano"
-             class="w-full h-full object-cover" loading="lazy">
-        <p class="cap">The room — draped in red and purple.</p>
+        <img src="images/bar-interior.jpg" alt="Không gian quầy bar" class="w-full h-full object-cover" loading="lazy">
+        <p class="cap" data-i18n="cap.interior">Không gian — phủ đỏ và tím.</p>
       </div>
 
-      <!-- Mid-right: bartender at work -->
       <div class="gallery-item reveal col-span-6 md:col-span-5">
-        <img src="images/bartender.jpg"
-             alt="Bartender stirring a cocktail in a coupe glass"
-             class="w-full h-full object-cover" loading="lazy">
-        <p class="cap">A spoon, a glass, a quiet moment.</p>
-      </div>
-
-      <!-- Bottom row: chess, piano, bottles, courtyard -->
-      <div class="gallery-item reveal col-span-6 md:col-span-3">
-        <img src="images/chess.jpg"
-             alt="Chess board with Bombay Sapphire bottle"
-             class="w-full h-full object-cover" loading="lazy">
-        <p class="cap">A late-night opening.</p>
+        <img src="images/bartender.jpg" alt="Pha chế cocktail" class="w-full h-full object-cover" loading="lazy">
+        <p class="cap" data-i18n="cap.bartender">Một chiếc thìa, một ly, một khoảnh khắc tĩnh lặng.</p>
       </div>
 
       <div class="gallery-item reveal col-span-6 md:col-span-3">
-        <img src="images/piano.jpg"
-             alt="KAWAI upright piano and bookshelf with Wittgenstein's Tractatus"
-             class="w-full h-full object-cover" loading="lazy">
-        <p class="cap">The reading corner.</p>
+        <img src="images/chess.jpg" alt="Bàn cờ và Bombay Sapphire" class="w-full h-full object-cover" loading="lazy">
+        <p class="cap" data-i18n="cap.chess">Một ván cờ đêm khuya.</p>
       </div>
 
       <div class="gallery-item reveal col-span-6 md:col-span-3">
-        <img src="images/bottles.jpg"
-             alt="Liquor bottles arranged on a sun-lit sill"
-             class="w-full h-full object-cover" loading="lazy">
-        <p class="cap">From the cellar.</p>
+        <img src="images/piano.jpg" alt="Đàn piano và tủ sách" class="w-full h-full object-cover" loading="lazy">
+        <p class="cap" data-i18n="cap.piano">Góc đọc sách.</p>
       </div>
 
       <div class="gallery-item reveal col-span-6 md:col-span-3">
-        <img src="images/courtyard.jpg"
-             alt="Outdoor courtyard at dusk with plumeria tree"
-             class="w-full h-full object-cover" loading="lazy">
-        <p class="cap">The courtyard, after dusk.</p>
+        <img src="images/bottles.jpg" alt="Chai rượu bên cửa sổ" class="w-full h-full object-cover" loading="lazy">
+        <p class="cap" data-i18n="cap.bottles">Từ hầm rượu.</p>
+      </div>
+
+      <div class="gallery-item reveal col-span-6 md:col-span-3">
+        <img src="images/courtyard.jpg" alt="Sân ngoài lúc hoàng hôn" class="w-full h-full object-cover" loading="lazy">
+        <p class="cap" data-i18n="cap.courtyard">Sân ngoài, sau hoàng hôn.</p>
       </div>
 
     </div>
@@ -831,25 +604,22 @@
 </section>
 
 
-<!-- ════════════════ VISIT ════════════════ -->
+<!-- ════ VISIT ════ -->
 <section id="visit" class="grain relative py-24 md:py-36 px-6">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-stretch">
 
     <div class="reveal h-[420px] md:h-auto min-h-[440px] border border-gold/20 overflow-hidden">
-      <iframe
-        title="Tractatus Location"
+      <iframe title="Tractatus Location"
         src="https://www.bing.com/maps/embed?h=600&w=800&cp=10.802780~106.694717&lvl=18&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
         width="100%" height="100%"
-        style="border:0; filter: grayscale(0.4) contrast(1.05) brightness(0.88);"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen></iframe>
+        style="border:0;filter:grayscale(.4) contrast(1.05) brightness(.88);"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
 
     <div class="reveal flex flex-col justify-center">
-      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-5">— Find Us</p>
-      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">
-        Down a quiet lane<br/>in <span class="italic font-light">Thao Dien.</span>
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-5" data-i18n="visit.eyebrow">— Tìm Chúng Tôi</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]" data-i18n-html="visit.heading">
+        Trong một con hẻm yên tĩnh<br/>ở <span class="italic font-light">Thảo Điền.</span>
       </h2>
       <div class="divider-left"></div>
 
@@ -857,10 +627,9 @@
         <div class="flex gap-5">
           <i class="fa-solid fa-location-dot text-gold mt-1.5"></i>
           <div>
-            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Address</p>
+            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5" data-i18n="visit.addr.label">Địa Chỉ</p>
             <p class="text-cream font-serif text-lg leading-snug">
-              13 Đặng Tiến Đông, An Khánh<br/>
-              Thảo Điền, Thủ Đức, Ho Chi Minh City
+              13 Đặng Tiến Đông, An Khánh<br/>Thảo Điền, Thủ Đức, TP.HCM
             </p>
           </div>
         </div>
@@ -868,11 +637,11 @@
         <div class="flex gap-5">
           <i class="fa-regular fa-clock text-gold mt-1.5"></i>
           <div>
-            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Opening Hours</p>
+            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5" data-i18n="visit.hours.label">Giờ Mở Cửa</p>
             <ul class="text-cream font-serif text-lg space-y-1">
-              <li><span class="inline-block w-32 text-cream/60">Mon — Thu</span> 17:00 — 00:00</li>
-              <li><span class="inline-block w-32 text-cream/60">Fri — Sat</span> 17:00 — 01:00</li>
-              <li><span class="inline-block w-32 text-cream/60">Sunday</span> 18:00 — 23:00</li>
+              <li><span class="inline-block w-32 text-cream/60" data-i18n="visit.hours.mth">Thứ 2 — 5</span> 17:00 — 00:00</li>
+              <li><span class="inline-block w-32 text-cream/60" data-i18n="visit.hours.fs">Thứ 6 — 7</span> 17:00 — 01:00</li>
+              <li><span class="inline-block w-32 text-cream/60" data-i18n="visit.hours.sun">Chủ Nhật</span> 18:00 — 23:00</li>
             </ul>
           </div>
         </div>
@@ -880,9 +649,9 @@
         <div class="flex gap-5">
           <i class="fa-brands fa-facebook-messenger text-gold mt-1.5"></i>
           <div>
-            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Reservations</p>
-            <a href="https://m.me/tractatus.thaodien" target="_blank" rel="noopener" class="text-cream font-serif text-lg hover:text-gold transition-colors">
-              Message us on Facebook →
+            <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5" data-i18n="visit.res.label">Đặt Bàn</p>
+            <a href="https://www.facebook.com/messages/t/61585262450808/" target="_blank" rel="noopener" class="text-cream font-serif text-lg hover:text-gold transition-colors" data-i18n="visit.res.link">
+              Nhắn tin qua Facebook →
             </a>
           </div>
         </div>
@@ -904,69 +673,67 @@
 </section>
 
 
-<!-- ════════════════ RESERVATION ════════════════ -->
+<!-- ════ CONTACT / RESERVATION ════ -->
 <section id="contact" class="py-24 md:py-36 px-6 bg-coal grain relative">
   <div class="max-w-5xl mx-auto">
 
     <div class="text-center reveal">
-      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4">— Reserve a Table</p>
-      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]">Save your seat.</h2>
-      <p class="text-cream/65 max-w-xl mx-auto mt-6 font-light">
-        We'll send your booking directly to our Facebook Messenger and reply within the hour.
-        Parties of 5+ may be asked for a small deposit.
-      </p>
+      <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4" data-i18n="contact.eyebrow">— Đặt Bàn</p>
+      <h2 class="font-serif text-4xl md:text-6xl text-cream leading-[0.95]" data-i18n="contact.heading">Giữ chỗ của bạn.</h2>
+      <p class="text-cream/65 max-w-xl mx-auto mt-6 font-light" data-i18n="contact.sub">Chúng tôi sẽ gửi đặt bàn của bạn thẳng đến Messenger và phản hồi trong vòng một giờ. Nhóm từ 5 người trở lên có thể cần đặt cọc nhỏ.</p>
       <div class="divider"></div>
     </div>
 
     <form id="reservationForm" class="reveal mt-14 grid md:grid-cols-2 gap-5"
-          onsubmit="handleReservation(event)" data-fb-page="tractatus.thaodien">
+          onsubmit="handleReservation(event)" data-fb-page="61585262450808">
+
       <div>
-        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Name</label>
-        <input required type="text" name="name" class="field w-full px-4 py-3.5" placeholder="Your full name">
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2" data-i18n="form.name.label">Họ và Tên</label>
+        <input required type="text" name="name" class="field w-full px-4 py-3.5" data-i18n-placeholder="form.name.ph">
       </div>
       <div>
         <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Email</label>
-        <input required type="email" name="email" class="field w-full px-4 py-3.5" placeholder="you@example.com">
+        <input required type="email" name="email" class="field w-full px-4 py-3.5" data-i18n-placeholder="form.email.ph">
       </div>
       <div>
-        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Date</label>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2" data-i18n="form.date.label">Ngày</label>
         <input required type="date" name="date" class="field w-full px-4 py-3.5">
       </div>
       <div>
-        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Time</label>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2" data-i18n="form.time.label">Giờ</label>
         <input required type="time" name="time" class="field w-full px-4 py-3.5">
       </div>
       <div>
-        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Number of Guests</label>
-        <select required name="guests" class="field w-full px-4 py-3.5">
-          <option value="" class="bg-coal">Select...</option>
-          <option class="bg-coal">1 guest</option>
-          <option class="bg-coal">2 guests</option>
-          <option class="bg-coal">3 guests</option>
-          <option class="bg-coal">4 guests</option>
-          <option class="bg-coal">5 guests</option>
-          <option class="bg-coal">6 guests</option>
-          <option class="bg-coal">7+ guests</option>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2" data-i18n="form.guests.label">Số Khách</label>
+        <select required name="guests" class="field w-full px-4 py-3.5" id="guestsSelect">
+          <option value="" class="bg-coal" data-i18n-opt="guests.0">Chọn...</option>
+          <option class="bg-coal" data-i18n-opt="guests.1">1 khách</option>
+          <option class="bg-coal" data-i18n-opt="guests.2">2 khách</option>
+          <option class="bg-coal" data-i18n-opt="guests.3">3 khách</option>
+          <option class="bg-coal" data-i18n-opt="guests.4">4 khách</option>
+          <option class="bg-coal" data-i18n-opt="guests.5">5 khách</option>
+          <option class="bg-coal" data-i18n-opt="guests.6">6 khách</option>
+          <option class="bg-coal" data-i18n-opt="guests.7">7+ khách</option>
         </select>
       </div>
       <div>
-        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Phone (optional)</label>
-        <input type="tel" name="phone" class="field w-full px-4 py-3.5" placeholder="+84 ...">
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2" data-i18n="form.phone.label">Số Điện Thoại (không bắt buộc)</label>
+        <input type="tel" name="phone" class="field w-full px-4 py-3.5" data-i18n-placeholder="form.phone.ph">
       </div>
       <div class="md:col-span-2">
-        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2">Anything we should know?</label>
-        <textarea name="message" rows="4" class="field w-full px-4 py-3.5" placeholder="Special occasions, dietary notes, seating preferences..."></textarea>
+        <label class="block text-cream/55 text-[10px] uppercase tracking-widest-2 mb-2" data-i18n="form.msg.label">Ghi Chú Thêm</label>
+        <textarea name="message" rows="4" class="field w-full px-4 py-3.5" data-i18n-placeholder="form.msg.ph"></textarea>
       </div>
 
       <div class="md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-5 mt-3">
         <p class="text-cream/55 text-xs flex items-center gap-2">
           <i class="fa-brands fa-facebook-messenger text-gold/85"></i>
-          Sent directly to our Messenger — typical reply within the hour.
+          <span data-i18n="form.note">Gửi thẳng đến Messenger của chúng tôi — phản hồi trong vòng một giờ.</span>
         </p>
         <button type="submit"
           class="bg-gold text-ink px-10 py-3.5 uppercase tracking-widest-2 text-[10px] font-medium hover:bg-goldsoft transition-colors w-full sm:w-auto inline-flex items-center justify-center gap-2.5">
           <i class="fa-brands fa-facebook-messenger"></i>
-          Send via Messenger
+          <span data-i18n="form.submit">Gửi qua Messenger</span>
         </button>
       </div>
 
@@ -974,17 +741,17 @@
     </form>
 
     <div class="reveal mt-16 grid sm:grid-cols-3 gap-5 text-center">
-      <a href="https://m.me/tractatus.thaodien" target="_blank" rel="noopener"
+      <a href="https://www.facebook.com/messages/t/61585262450808/" target="_blank" rel="noopener"
          class="border border-gold/25 hover:border-gold py-7 transition-colors group">
         <i class="fa-brands fa-facebook-messenger text-gold text-2xl mb-2.5 block"></i>
         <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Messenger</p>
-        <p class="font-serif text-cream group-hover:text-gold transition-colors">Chat with us</p>
+        <p class="font-serif text-cream group-hover:text-gold transition-colors" data-i18n="contact.messenger">Nhắn tin với chúng tôi</p>
       </a>
-      <a href="https://www.facebook.com/tractatus.thaodien" target="_blank" rel="noopener"
+      <a href="https://www.facebook.com/profile.php?id=61585262450808" target="_blank" rel="noopener"
          class="border border-gold/25 hover:border-gold py-7 transition-colors group">
         <i class="fa-brands fa-facebook text-gold text-2xl mb-2.5 block"></i>
         <p class="text-cream/55 text-[10px] uppercase tracking-widest-2 mb-1.5">Facebook</p>
-        <p class="font-serif text-cream group-hover:text-gold transition-colors">/tractatus.thaodien</p>
+        <p class="font-serif text-cream group-hover:text-gold transition-colors">Tractatus</p>
       </a>
       <a href="https://instagram.com/tractatus.bar" target="_blank" rel="noopener"
          class="border border-gold/25 hover:border-gold py-7 transition-colors group">
@@ -993,154 +760,336 @@
         <p class="font-serif text-cream group-hover:text-gold transition-colors">@tractatus.bar</p>
       </a>
     </div>
+
   </div>
 </section>
 
 
-<!-- ════════════════ FOOTER ════════════════ -->
+<!-- ════ FOOTER ════ -->
 <footer class="bg-ink border-t border-gold/15 py-14 px-6">
   <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 items-center text-center md:text-left">
-
     <div>
       <p class="font-serif text-3xl text-cream">tractatus</p>
-      <p class="text-cream/50 text-[10px] uppercase tracking-widest-2 mt-1.5">A bar for conversation and thought</p>
+      <p class="text-cream/50 text-[10px] uppercase tracking-widest-2 mt-1.5" data-i18n="footer.tagline">Quán bar dành cho trò chuyện và suy nghĩ</p>
     </div>
-
-    <p class="text-cream/45 text-xs text-center font-light leading-relaxed">
-      "Whereof one cannot speak,<br class="hidden md:block"/>
-      thereof one must be silent."
+    <p class="text-cream/45 text-xs text-center font-light leading-relaxed" data-i18n-html="footer.quote">
+      "Điều gì không thể nói bằng lời,<br class="hidden md:block"/>người ta phải giữ trong im lặng."
     </p>
-
     <div class="flex md:justify-end justify-center gap-6 text-gold text-xl">
       <a href="https://instagram.com/tractatus.bar" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-cream transition-colors"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.facebook.com/tractatus.thaodien" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-cream transition-colors"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://m.me/tractatus.thaodien" target="_blank" rel="noopener" aria-label="Messenger" class="hover:text-cream transition-colors"><i class="fa-brands fa-facebook-messenger"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61585262450808" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-cream transition-colors"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.facebook.com/messages/t/61585262450808/" target="_blank" rel="noopener" aria-label="Messenger" class="hover:text-cream transition-colors"><i class="fa-brands fa-facebook-messenger"></i></a>
     </div>
   </div>
-
   <p class="max-w-6xl mx-auto mt-10 pt-6 border-t border-gold/10 text-cream/35 text-[10px] uppercase tracking-widest-2 text-center">
-    © <span id="year"></span> Tractatus · 13 Đặng Tiến Đông, Thảo Điền · Ho Chi Minh City
+    © <span id="year"></span> Tractatus · 13 Đặng Tiến Đông, Thảo Điền · TP. Hồ Chí Minh
   </p>
 </footer>
 
 
-<!-- ════════════════ FLOATING BOOK BUTTON ════════════════ -->
+<!-- Floating CTA -->
 <a href="#contact" id="floatBtn"
    class="pulse-gold fixed bottom-6 right-6 z-40 bg-gold text-ink px-5 py-3 text-[10px] uppercase tracking-widest-2 font-medium shadow-2xl hover:bg-goldsoft transition-colors flex items-center gap-2">
-  <i class="fa-regular fa-bookmark"></i> Book a Table
+  <i class="fa-regular fa-bookmark"></i>
+  <span data-i18n="float.btn">Đặt Bàn</span>
 </a>
 
 
+<!-- ════ JAVASCRIPT ════ -->
 <script>
-  /* ─── Mobile menu ─── */
-  const menuBtn   = document.getElementById('menuBtn');
-  const menuClose = document.getElementById('menuClose');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-  menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
-
-  /* ─── Navbar scroll state + scroll progress bar ─── */
-  const navbar = document.getElementById('navbar');
-  const progress = document.getElementById('scrollProgress');
-  const onScroll = () => {
-    const y = window.scrollY;
-    if (y > 40) navbar.classList.add('bg-ink/85','backdrop-blur-md','border-b','border-gold/15','shadow-lg');
-    else navbar.classList.remove('bg-ink/85','backdrop-blur-md','border-b','border-gold/15','shadow-lg');
-
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    progress.style.width = h > 0 ? (y / h * 100) + '%' : '0';
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  /* ─── Reveal-on-scroll ─── */
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        // Slight stagger when multiple items appear together
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => io.observe(el));
-
-  /* ─── "Open now" indicator (Asia/Ho_Chi_Minh time, GMT+7) ─── */
-  function updateOpenStatus() {
-    // Get current time in Vietnam regardless of viewer timezone
-    const now = new Date();
-    const vn = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' }));
-    const day = vn.getDay(); // 0 Sun ... 6 Sat
-    const minutes = vn.getHours() * 60 + vn.getMinutes();
-
-    // Hours: Mon-Thu 17:00-24:00, Fri-Sat 17:00-01:00 (next day), Sun 18:00-23:00
-    let open = false;
-    if (day === 0)              open = minutes >= 18*60 && minutes < 23*60;             // Sun
-    else if (day >= 1 && day <= 4) open = minutes >= 17*60;                              // Mon–Thu (until 24:00)
-    else if (day === 5 || day === 6) open = minutes >= 17*60 || minutes < 60;            // Fri/Sat (incl. early-AM)
-
-    const pip = document.getElementById('openPip');
-    const label = document.getElementById('openLabel');
-    if (open) { pip.classList.remove('closed'); label.textContent = 'Open now'; }
-    else      { pip.classList.add('closed');    label.textContent = 'Closed — opens at 17:00'; }
+/* ─── Translations ─── */
+const T = {
+  vi: {
+    'nav.about': 'Về Chúng Tôi', 'nav.menu': 'Thực Đơn', 'nav.evenings': 'Buổi Tối',
+    'nav.gallery': 'Thư Viện', 'nav.visit': 'Địa Chỉ', 'nav.reserve': 'Đặt Bàn',
+    'status.open': 'Đang mở cửa', 'status.closed': 'Đóng cửa — mở lúc 17:00',
+    'hero.tagline': 'Quán bar dành cho trò chuyện và suy nghĩ.',
+    'hero.sub': 'Cocktails · Rượu Vang · Nhạc Jazz · Est. MMXXIII',
+    'hero.cta1': 'Đặt Bàn Ngay', 'hero.cta2': 'Xem Thực Đơn', 'hero.scroll': 'Cuộn xuống',
+    'facts.years': 'Năm Phục Vụ', 'facts.wines': 'Loại Rượu Vang',
+    'facts.doors': 'Mở Cửa Lúc', 'facts.convos': 'Cuộc Trò Chuyện',
+    'about.eyebrow': '— Câu Chuyện Của Chúng Tôi',
+    'about.heading': 'Một không gian ẩn<br/>dành cho tâm trí <span class="italic font-light">tò mò.</span>',
+    'about.body1': 'Nằm sâu trong một con hẻm yên tĩnh ở Thảo Điền, <span class="text-gold">Tractatus</span> là một không gian ẩn — nơi những cuộc trò chuyện thật sự diễn ra suôn sẻ như cocktail và rượu vang của chúng tôi. Lấy cảm hứng từ tác phẩm <em class="italic">Tractatus Logico-Philosophicus</em> của Wittgenstein, chúng tôi xây dựng nơi này cho những người suy nghĩ, những kẻ mơ mộng và những người bạn cũ gặp lại nhau.',
+    'about.body2': 'Ánh đèn hổ phách ấm áp, những tấm vải drape đặc trưng, tủ sách và cây đàn piano yên tĩnh — một nơi trú ẩn thoát khỏi sự huyên náo của thành phố. Ngồi gần lại. Nói chuyện thật chậm. Ở lại một lúc nha.',
+    'about.tag2': 'Rượu Vang Cổ Điển', 'about.tag3': 'Nhạc Jazz Vinyl', 'about.tag4': 'Sách & Đàn Piano',
+    'about.quote': '"Điều gì không thể nói bằng lời, thì hãy giữ trong im lặng."',
+    'quote.text': 'Giới hạn ngôn ngữ của tôi<br class="hidden md:block"/>cũng là giới hạn của thế giới tôi.',
+    'menu.eyebrow': '— Thực Đơn', 'menu.heading': 'Danh sách được chọn lọc.',
+    'menu.sub': 'Mỗi ly đều được cân nhắc. Cocktail, rượu vang và đồ ăn nhẹ để cuộc trò chuyện không bao giờ dừng lại.',
+    'menu.cocktails.title': 'Cocktail Đặc Trưng', 'menu.cocktails.sub': 'Những thức uống đặt tên theo những ý tưởng đáng tranh luận.',
+    'menu.wine.title': 'Từ Hầm Rượu', 'menu.wine.sub': 'Danh sách nhỏ nhưng được chắt lọc — theo ly và theo chai.',
+    'menu.spirits.title': 'Rượu Mạnh, Nguyên Chất', 'menu.spirits.sub': 'Phục vụ trong ly pha lê nặng. Đúng như lẽ ra phải thế.',
+    'menu.nonalc.title': 'Không Cồn', 'menu.nonalc.sub': 'Thức uống zero-proof được chế tác kỹ lưỡng — chất lượng không kém.',
+    'menu.bites.title': 'Ăn Nhẹ', 'menu.bites.sub': 'Những thứ nhỏ để chia sẻ trong khi trò chuyện.',
+    'tag.sig': 'Đặc Trưng', 'tag.house': 'Gợi Ý',
+    'wine.glass': '· Ly', 'wine.bottle': '· Chai',
+    'c01.desc': 'Mezcal, Aperol, bưởi hun khói, siro hạt tonka.',
+    'c02.desc': 'Rum ủ, trà oolong, vanilla, vỏ cam đắng.',
+    'c03.desc': 'Gin ngâm quất, Campari, vermouth ngọt.',
+    'c04.desc': 'Espresso, cognac, cacao bitters, kem muối.',
+    'c05.desc': 'Rye whiskey, siro lá sung, Angostura, khói gỗ sồi.',
+    'w06.desc': 'Grenache-Syrah. Tiêu đen, mận, thảo mộc miền Nam nước Pháp.',
+    'w07.desc': 'Sangiovese, anh đào chua, da thuộc, nắng Tuscany.',
+    'w08.desc': 'Thanh mát, vị mặn nhẹ, đào trắng. Đại Tây Dương trong từng ly.',
+    'w09.desc': 'Đất rừng, quả mọng tối, tannin mịn như lụa.',
+    'w10.desc': 'Brioche, táo xanh, bọt bền.',
+    's11.desc': 'Single malt Nhật Bản. Mật ong, gỗ mizunara, trái cây sấy.',
+    's12.desc': 'Than bùn Islay, muối biển, khói sâu, hậu vị dài.',
+    's13.desc': 'Cacao, cam ướp đường, da thuộc, hậu vị mượt mà.',
+    's14.desc': 'Khói, agave, tiêu trắng. Một cuộc trò chuyện chậm rãi.',
+    'n15.desc': 'Verjus, húng quế, dưa leo, tonic hoa cơm cháy.',
+    'n16.desc': 'Tonic cold-brew, vanilla, tinh dầu citrus, soda.',
+    'n17.desc': 'Siro tự làm từ quất & sả, nước soda.',
+    'b18.name': 'Đĩa Phô Mai & Charcuterie', 'b18.desc': 'Comté, brie, prosciutto, mứt sung, bánh mì sourdough.',
+    'b19.desc': 'Burrata, mật ong truffle, hạt dẻ rang, dầu ô liu.',
+    'b20.name': 'Hạnh Nhân & Olive', 'b20.desc': 'Hạnh nhân Marcona hun khói, olive Castelvetrano, muối biển.',
+    'b21.name': 'Thưởng Thức Chocolate Đen', 'b21.desc': 'Cacao Việt Nam nguyên chất, ba cách thưởng thức.',
+    'menu.note': 'Tất cả giá tính bằng VNĐ · Chưa bao gồm 5% phí dịch vụ & VAT',
+    'events.eyebrow': '— Các Buổi Tối', 'events.heading': 'Những đêm chậm rãi, trọn vẹn.',
+    'events.jazz.title': 'Đêm Nhạc Jazz', 'events.jazz.desc': 'Ban nhạc trio biểu diễn mỗi thứ Năm và thứ Bảy. Nhạc tiêu chuẩn, bossa nova và một chút blues.', 'events.jazz.time': 'Thứ 5 & 7 · 21:00',
+    'events.games.title': 'Sách & Trò Chơi', 'events.games.desc': 'Một tủ sách đã qua tay nhiều người. Cờ vua, cờ vây, backgammon. Gọi thêm đồ uống, quên đi thời gian.', 'events.games.time': 'Mỗi tối',
+    'events.salon.title': 'Chủ Nhật Salon', 'events.salon.desc': 'Mỗi tháng một lần: một khách mời, một chủ đề, một ly rượu. Triết học, điện ảnh, thiết kế.', 'events.salon.time': 'CN cuối tháng · 19:00',
+    'gallery.eyebrow': '— Không Gian', 'gallery.heading': 'Những khoảnh khắc bên trong.',
+    'cap.exterior': 'N°.13 Đặng Tiến Đông — cửa vào.',
+    'cap.interior': 'Không gian — phủ đỏ và tím.',
+    'cap.bartender': 'Một chiếc thìa, một ly, một khoảnh khắc tĩnh lặng.',
+    'cap.chess': 'Một ván cờ đêm khuya.', 'cap.piano': 'Góc đọc sách.',
+    'cap.bottles': 'Từ hầm rượu.', 'cap.courtyard': 'Sân ngoài, sau hoàng hôn.',
+    'visit.eyebrow': '— Tìm Chúng Tôi',
+    'visit.heading': 'Trong một con hẻm yên tĩnh<br/>ở <span class="italic font-light">Thảo Điền.</span>',
+    'visit.addr.label': 'Địa Chỉ', 'visit.hours.label': 'Giờ Mở Cửa',
+    'visit.hours.mth': 'Thứ 2 — 5', 'visit.hours.fs': 'Thứ 6 — 7', 'visit.hours.sun': 'Chủ Nhật',
+    'visit.res.label': 'Đặt Bàn', 'visit.res.link': 'Nhắn tin qua Facebook →',
+    'contact.eyebrow': '— Đặt Bàn', 'contact.heading': 'Giữ chỗ của bạn.',
+    'contact.sub': 'Chúng tôi sẽ gửi đặt bàn của bạn thẳng đến Messenger và phản hồi trong vòng một giờ. Nhóm từ 5 người trở lên có thể cần đặt cọc nhỏ.',
+    'form.name.label': 'Họ và Tên', 'form.name.ph': 'Họ và tên đầy đủ',
+    'form.email.ph': 'ban@email.com',
+    'form.date.label': 'Ngày', 'form.time.label': 'Giờ',
+    'form.guests.label': 'Số Khách',
+    'form.phone.label': 'Số Điện Thoại (không bắt buộc)', 'form.phone.ph': '+84 ...',
+    'form.msg.label': 'Ghi Chú Thêm', 'form.msg.ph': 'Dịp đặc biệt, yêu cầu chỗ ngồi...',
+    'form.note': 'Gửi thẳng đến Messenger của chúng tôi — phản hồi trong vòng một giờ.',
+    'form.submit': 'Gửi qua Messenger',
+    'guests.0': 'Chọn...', 'guests.1': '1 khách', 'guests.2': '2 khách', 'guests.3': '3 khách',
+    'guests.4': '4 khách', 'guests.5': '5 khách', 'guests.6': '6 khách', 'guests.7': '7+ khách',
+    'contact.messenger': 'Nhắn tin với chúng tôi',
+    'footer.tagline': 'Quán bar dành cho trò chuyện và suy nghĩ',
+    'footer.quote': '"Điều gì không thể nói bằng lời,<br class="hidden md:block"/>người ta phải giữ trong im lặng."',
+    'float.btn': 'Đặt Bàn',
+    'msg.copied': (name) => `Cảm ơn bạn, ${name}. Thông tin đặt bàn đã được sao chép — dán vào cửa sổ Messenger vừa mở và nhấn gửi.`,
+    'msg.manual': 'Messenger đã mở trong tab mới. <button type="button" id="copyAgain" class="underline text-gold hover:text-cream">Sao chép thông tin đặt bàn</button> và dán vào đó.',
+    'msg.done': 'Đã sao chép. Dán vào cửa sổ Messenger và nhấn gửi.',
+  },
+  en: {
+    'nav.about': 'About', 'nav.menu': 'Menu', 'nav.evenings': 'Evenings',
+    'nav.gallery': 'Gallery', 'nav.visit': 'Visit', 'nav.reserve': 'Reserve',
+    'status.open': 'Open now', 'status.closed': 'Closed — opens at 17:00',
+    'hero.tagline': 'A bar for conversation and thought.',
+    'hero.sub': 'Cocktails · Wine · Vinyl Jazz · Est. MMXXIII',
+    'hero.cta1': 'Reserve a Table', 'hero.cta2': 'View the Menu', 'hero.scroll': 'Scroll',
+    'facts.years': 'Years of Pours', 'facts.wines': 'Wines on the List',
+    'facts.doors': 'Doors Open', 'facts.convos': 'Conversations Begun',
+    'about.eyebrow': '— Our Story',
+    'about.heading': 'A hidden room<br/>for the <span class="italic font-light">curious</span> mind.',
+    'about.body1': 'Tucked down a quiet lane in Thao Dien, <span class="text-gold">Tractatus</span> is a hidden gem where meaningful conversations flow as smoothly as our cocktails and wines. Inspired by Wittgenstein\'s <em class="italic">Tractatus Logico-Philosophicus</em>, we built a place for thinkers, dreamers, and old friends meeting again.',
+    'about.body2': 'Soft amber light, draped fabrics, walls of books and a quiet upright piano — a deliberate refuge from the noise of the city. Sit close. Talk slowly. Stay a while.',
+    'about.tag2': 'Old World Wine', 'about.tag3': 'Vinyl Jazz', 'about.tag4': 'Books & Piano',
+    'about.quote': '"Whereof one cannot speak, thereof one must be silent."',
+    'quote.text': 'The limits of my language<br class="hidden md:block"/>mean the limits of my world.',
+    'menu.eyebrow': '— The Menu', 'menu.heading': 'A considered list.',
+    'menu.sub': 'Every pour is chosen with intention. Spirits, vines and small plates to keep the conversation going.',
+    'menu.cocktails.title': 'Signature Cocktails', 'menu.cocktails.sub': 'Drinks named after ideas worth arguing about.',
+    'menu.wine.title': 'From the Cellar', 'menu.wine.sub': 'A small, opinionated list — by glass and by bottle.',
+    'menu.spirits.title': 'Spirits, Neat', 'menu.spirits.sub': 'Served in heavy crystal. As they should be.',
+    'menu.nonalc.title': 'Without the Spirit', 'menu.nonalc.sub': 'Crafted zero-proof drinks — equally considered.',
+    'menu.bites.title': 'Light Bites', 'menu.bites.sub': 'Small things to share between sentences.',
+    'tag.sig': 'Signature', 'tag.house': 'House Pick',
+    'wine.glass': '· Glass', 'wine.bottle': '· Bottle',
+    'c01.desc': 'Mezcal, Aperol, smoked grapefruit, tonka bean syrup.',
+    'c02.desc': 'Aged rum, oolong tea, vanilla, bitter orange peel.',
+    'c03.desc': 'Gin infused with kumquat, Campari, sweet vermouth.',
+    'c04.desc': 'Espresso, cognac, cacao bitters, salted cream.',
+    'c05.desc': 'Rye whiskey, fig leaf cordial, Angostura, oak smoke.',
+    'w06.desc': 'Grenache-Syrah. Black pepper, plum, garrigue.',
+    'w07.desc': 'Sangiovese, sour cherry, leather, Tuscan sun.',
+    'w08.desc': 'Crisp, saline, white peach. Atlantic in a glass.',
+    'w09.desc': 'Forest floor, dark berries, silk-fine tannin.',
+    'w10.desc': 'Brioche, green apple, fine persistent bead.',
+    's11.desc': 'Japanese single malt. Honey, mizunara oak, dried fruit.',
+    's12.desc': 'Islay peat, sea spray, deep smoke, long finish.',
+    's13.desc': 'Cocoa, candied orange, leather, velvet finish.',
+    's14.desc': 'Smoke, agave, white pepper. A slow conversation.',
+    'n15.desc': 'Verjus, basil, cucumber, elderflower tonic.',
+    'n16.desc': 'Cold-brew tonic, vanilla, citrus oil, soda.',
+    'n17.desc': 'House syrup of kumquat & lemongrass, soda water.',
+    'b18.name': 'Cheese & Charcuterie Board', 'b18.desc': 'Aged comté, brie, prosciutto, fig jam, sourdough.',
+    'b19.desc': 'Burrata, truffle honey, toasted pistachio, olive oil.',
+    'b20.name': 'Smoked Almonds & Olives', 'b20.desc': 'Marcona almonds, Castelvetrano olives, sea salt.',
+    'b21.name': 'Dark Chocolate Tasting', 'b21.desc': 'Single-origin Vietnamese cacao, three expressions.',
+    'menu.note': 'All prices in VND · Subject to 5% service charge & VAT',
+    'events.eyebrow': '— The Evenings', 'events.heading': 'Slow nights, well spent.',
+    'events.jazz.title': 'Jazz Nights', 'events.jazz.desc': 'Live trio every Thursday and Saturday. Standards, bossa, and a little blue.', 'events.jazz.time': 'Thu & Sat · 21:00',
+    'events.games.title': 'Books & Games', 'events.games.desc': 'A wall of well-worn books. Chess, Go, backgammon. Order a drink, lose track of time.', 'events.games.time': 'Every night',
+    'events.salon.title': 'Salon Sundays', 'events.salon.desc': 'Once a month: a guest, a topic, a glass of wine. Philosophy, cinema, design.', 'events.salon.time': 'Last Sun · 19:00',
+    'gallery.eyebrow': '— The Room', 'gallery.heading': 'Glances inside.',
+    'cap.exterior': 'N°.13 Đặng Tiến Đông — the entrance.',
+    'cap.interior': 'The room — draped in red and purple.',
+    'cap.bartender': 'A spoon, a glass, a quiet moment.',
+    'cap.chess': 'A late-night opening.', 'cap.piano': 'The reading corner.',
+    'cap.bottles': 'From the cellar.', 'cap.courtyard': 'The courtyard, after dusk.',
+    'visit.eyebrow': '— Find Us',
+    'visit.heading': 'Down a quiet lane<br/>in <span class="italic font-light">Thao Dien.</span>',
+    'visit.addr.label': 'Address', 'visit.hours.label': 'Opening Hours',
+    'visit.hours.mth': 'Mon — Thu', 'visit.hours.fs': 'Fri — Sat', 'visit.hours.sun': 'Sunday',
+    'visit.res.label': 'Reservations', 'visit.res.link': 'Message us on Facebook →',
+    'contact.eyebrow': '— Reserve a Table', 'contact.heading': 'Save your seat.',
+    'contact.sub': 'We\'ll send your booking directly to our Facebook Messenger and reply within the hour. Parties of 5+ may be asked for a small deposit.',
+    'form.name.label': 'Name', 'form.name.ph': 'Your full name',
+    'form.email.ph': 'you@example.com',
+    'form.date.label': 'Date', 'form.time.label': 'Time',
+    'form.guests.label': 'Number of Guests',
+    'form.phone.label': 'Phone (optional)', 'form.phone.ph': '+84 ...',
+    'form.msg.label': 'Anything we should know?', 'form.msg.ph': 'Special occasions, seating preferences...',
+    'form.note': 'Sent directly to our Messenger — typical reply within the hour.',
+    'form.submit': 'Send via Messenger',
+    'guests.0': 'Select...', 'guests.1': '1 guest', 'guests.2': '2 guests', 'guests.3': '3 guests',
+    'guests.4': '4 guests', 'guests.5': '5 guests', 'guests.6': '6 guests', 'guests.7': '7+ guests',
+    'contact.messenger': 'Chat with us',
+    'footer.tagline': 'A bar for conversation and thought',
+    'footer.quote': '"Whereof one cannot speak,<br class="hidden md:block"/>thereof one must be silent."',
+    'float.btn': 'Book a Table',
+    'msg.copied': (name) => `Thank you, ${name}. Your booking has been copied — paste it into the Messenger window we just opened and hit send.`,
+    'msg.manual': 'Messenger has opened in a new tab. <button type="button" id="copyAgain" class="underline text-gold hover:text-cream">Copy booking message</button> and paste it there.',
+    'msg.done': 'Copied. Paste it into the Messenger window and hit send.',
   }
+};
+
+/* ─── Language switcher ─── */
+let currentLang = localStorage.getItem('tractatus_lang') || 'vi';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  localStorage.setItem('tractatus_lang', lang);
+
+  // Text content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.textContent = v;
+  });
+  // Inner HTML (headings with spans, etc.)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = T[lang][el.dataset.i18nHtml];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  // Placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const v = T[lang][el.dataset.i18nPlaceholder];
+    if (v !== undefined) el.placeholder = v;
+  });
+  // Select options
+  document.querySelectorAll('[data-i18n-opt]').forEach(el => {
+    const v = T[lang][el.dataset.i18nOpt];
+    if (v !== undefined) el.textContent = v;
+  });
+
+  // Toggle button styles
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  // Update open/closed label with live status
   updateOpenStatus();
-  setInterval(updateOpenStatus, 60_000);
+}
 
-  /* ─── Reservation → copy to clipboard + open Tractatus Messenger ─── */
-  async function handleReservation(e) {
-    e.preventDefault();
-    const form = e.target;
-    const status = document.getElementById('formStatus');
-    const data = Object.fromEntries(new FormData(form).entries());
-    const fbPage = form.dataset.fbPage;
+/* ─── Open/Closed indicator ─── */
+function updateOpenStatus() {
+  const vn = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' }));
+  const day = vn.getDay(), m = vn.getHours() * 60 + vn.getMinutes();
+  const open =
+    day === 0 ? (m >= 18*60 && m < 23*60) :
+    day >= 1 && day <= 4 ? m >= 17*60 :
+    (day === 5 || day === 6) ? (m >= 17*60 || m < 60) : false;
 
-    const message =
-`Hello Tractatus — I'd like to book a table.
+  const pip = document.getElementById('openPip');
+  const lbl = document.getElementById('openLabel');
+  pip.classList.toggle('closed', !open);
+  lbl.textContent = T[currentLang][open ? 'status.open' : 'status.closed'];
+}
 
-• Name: ${data.name}
-• Email: ${data.email}${data.phone ? `
-• Phone: ${data.phone}` : ''}
-• Date: ${data.date}
-• Time: ${data.time}
-• Guests: ${data.guests}${data.message ? `
-• Notes: ${data.message}` : ''}
+/* ─── Mobile menu ─── */
+document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('menuClose').addEventListener('click', closeMobileMenu);
+document.getElementById('mobileMenu').querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
-Thank you!`;
+/* ─── Navbar + scroll progress ─── */
+const navbar = document.getElementById('navbar');
+const progress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  navbar.classList.toggle('bg-ink/85', y > 40);
+  navbar.classList.toggle('backdrop-blur-md', y > 40);
+  navbar.classList.toggle('border-b', y > 40);
+  navbar.classList.toggle('border-gold/15', y > 40);
+  navbar.classList.toggle('shadow-lg', y > 40);
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = h > 0 ? (y / h * 100) + '%' : '0';
+}, { passive: true });
 
-    let copied = false;
-    try { await navigator.clipboard.writeText(message); copied = true; }
-    catch (_) { /* fallback below */ }
-
-    // Open Messenger to the Tractatus page
-    window.open(`https://m.me/${fbPage}`, '_blank', 'noopener');
-
-    status.classList.remove('hidden');
-    status.innerHTML = copied
-      ? `Thank you, <span class="text-gold">${data.name.split(' ')[0]}</span>. Your booking has been copied — paste it into the Messenger window we just opened and hit send.`
-      : `Messenger has opened in a new tab. <button type="button" id="copyAgain" class="underline text-gold hover:text-cream">Copy booking message</button> and paste it there.`;
-
-    if (!copied) {
-      document.getElementById('copyAgain')?.addEventListener('click', () => {
-        const ta = document.createElement('textarea');
-        ta.value = message; document.body.appendChild(ta);
-        ta.select(); document.execCommand('copy'); ta.remove();
-        status.innerHTML = `Copied. Paste it into the Messenger window and hit send.`;
-      });
+/* ─── Reveal on scroll ─── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      io.unobserve(e.target);
     }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    form.reset();
-    status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+/* ─── Reservation → Messenger ─── */
+async function handleReservation(e) {
+  e.preventDefault();
+  const form = e.target;
+  const status = document.getElementById('formStatus');
+  const d = Object.fromEntries(new FormData(form).entries());
+  const fbPage = form.dataset.fbPage;
+
+  const isVi = currentLang === 'vi';
+  const message = isVi
+    ? `Xin chào Tractatus — tôi muốn đặt bàn.\n\n• Tên: ${d.name}\n• Email: ${d.email}${d.phone ? `\n• SĐT: ${d.phone}` : ''}\n• Ngày: ${d.date}\n• Giờ: ${d.time}\n• Số khách: ${d.guests}${d.message ? `\n• Ghi chú: ${d.message}` : ''}\n\nXin cảm ơn!`
+    : `Hello Tractatus — I'd like to book a table.\n\n• Name: ${d.name}\n• Email: ${d.email}${d.phone ? `\n• Phone: ${d.phone}` : ''}\n• Date: ${d.date}\n• Time: ${d.time}\n• Guests: ${d.guests}${d.message ? `\n• Notes: ${d.message}` : ''}\n\nThank you!`;
+
+  let copied = false;
+  try { await navigator.clipboard.writeText(message); copied = true; } catch (_) {}
+  window.open(`https://m.me/${fbPage}`, '_blank', 'noopener');
+
+  const firstName = d.name.split(' ')[0];
+  status.classList.remove('hidden');
+  status.innerHTML = copied
+    ? T[currentLang]['msg.copied'](firstName)
+    : T[currentLang]['msg.manual'];
+
+  if (!copied) {
+    document.getElementById('copyAgain')?.addEventListener('click', () => {
+      const ta = Object.assign(document.createElement('textarea'), { value: message });
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      status.innerHTML = T[currentLang]['msg.done'];
+    });
   }
+  form.reset();
+  status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 
-  /* ─── Footer year ─── */
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  /* ─── Min-date on reservation date input ─── */
-  const dateInput = document.querySelector('input[name="date"]');
-  if (dateInput) dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+/* ─── Init ─── */
+document.getElementById('year').textContent = new Date().getFullYear();
+const di = document.querySelector('input[name="date"]');
+if (di) di.setAttribute('min', new Date().toISOString().split('T')[0]);
+setLang(currentLang); // apply saved or default language on load
+updateOpenStatus();
+setInterval(updateOpenStatus, 60_000);
 </script>
 
 </body>
