@@ -71,10 +71,10 @@
   .reveal.visible{opacity:1;transform:none}
 
   /* Menu rows */
-  .menu-row{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:.85rem}
-  .menu-row .leader{border-bottom:1px dotted rgba(201,169,106,.35);transform:translateY(-4px)}
-  .menu-num{font-family:'Cormorant Garamond',Georgia,serif;color:rgba(201,169,106,.55);font-size:.95rem;letter-spacing:.05em;min-width:2ch}
-  .signature-tag{display:inline-block;margin-left:.5rem;padding:1px 7px;border:1px solid rgba(201,169,106,.5);color:#c9a96a;font-family:'Inter',sans-serif;font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;transform:translateY(-3px)}
+  .menu-row{display:grid;grid-template-columns:3rem 1fr auto;align-items:baseline;gap:.4rem .75rem}
+  .menu-row .leader{border-bottom:1px dotted rgba(201,169,106,.2);transform:translateY(-5px);min-width:12px}
+  .menu-num{font-family:'Cormorant Garamond',Georgia,serif;color:rgba(201,169,106,.38);font-size:.8rem;letter-spacing:.08em}
+  .menu-section-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:5rem;line-height:.85;color:rgba(201,169,106,.07);user-select:none;flex-shrink:0}
 
   /* Gallery */
   .gallery-item{overflow:hidden;position:relative}
@@ -303,7 +303,7 @@
 
 <!-- ════ MENU ════ -->
 <section id="menu" class="grain relative py-24 md:py-36 px-6 bg-coal">
-  <div class="max-w-5xl mx-auto">
+  <div class="max-w-4xl mx-auto">
 
     <div class="text-center reveal">
       <p class="text-gold uppercase tracking-widest-2 text-[10px] mb-4" data-i18n="menu.eyebrow">— Thực Đơn</p>
@@ -312,83 +312,96 @@
       <div class="divider"></div>
     </div>
 
-    <div class="mt-16 grid lg:grid-cols-2 gap-x-16 gap-y-16">
+    <div class="mt-12">
 
-      <!-- I. Signature -->
-      <div class="reveal">
-        <div class="flex items-end justify-between mb-8">
-          <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.sig.title">Signature</h3>
-          <span class="text-cream/35 text-[10px] uppercase tracking-widest-2">I.</span>
-        </div>
-        <div class="space-y-6">
-          <div class="menu-row"><span class="menu-num">I.1</span><p class="font-serif text-xl text-cream">Prelude</p><span class="leader"></span><p class="font-serif text-lg text-gold">190,000₫</p></div>
-          <div class="menu-row"><span class="menu-num">I.2</span><p class="font-serif text-xl text-cream">Proposition</p><span class="leader"></span><p class="font-serif text-lg text-gold">220,000₫</p></div>
-          <div class="menu-row"><span class="menu-num">I.3</span><p class="font-serif text-xl text-cream">Silence</p><span class="leader"></span><p class="font-serif text-lg text-gold">250,000₫</p></div>
-        </div>
-      </div>
-
-      <!-- II. Classic Cocktail -->
-      <div class="reveal">
-        <div class="flex items-end justify-between mb-8">
-          <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.classic.title">Classic Cocktail</h3>
-          <span class="text-cream/35 text-[10px] uppercase tracking-widest-2">II.</span>
-        </div>
-        <div class="space-y-6">
-          <div class="menu-row"><span class="menu-num">2.1</span><p class="font-serif text-xl text-cream">Mojito</p><span class="leader"></span><p class="font-serif text-lg text-gold">190,000₫</p></div>
-          <div class="menu-row"><span class="menu-num">2.2</span><p class="font-serif text-xl text-cream">Old Fashioned</p><span class="leader"></span><p class="font-serif text-lg text-gold">190,000₫</p></div>
-          <div class="menu-row"><span class="menu-num">2.3</span><p class="font-serif text-xl text-cream">Cosmopolitan</p><span class="leader"></span><p class="font-serif text-lg text-gold">210,000₫</p></div>
-          <div class="menu-row"><span class="menu-num">2.4</span><p class="font-serif text-xl text-cream">Margarita</p><span class="leader"></span><p class="font-serif text-lg text-gold">210,000₫</p></div>
-          <div class="menu-row"><span class="menu-num">2.5</span><p class="font-serif text-xl text-cream">Negroni</p><span class="leader"></span><p class="font-serif text-lg text-gold">220,000₫</p></div>
-          <div class="menu-row"><span class="menu-num">2.6</span><p class="font-serif text-xl text-cream" data-i18n="menu.classic.other">Other classics</p><span class="leader"></span><p class="font-serif text-lg text-gold">220,000₫</p></div>
-        </div>
-      </div>
-
-      <!-- III. Wine -->
-      <div class="reveal">
-        <div class="flex items-end justify-between mb-8">
-          <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.wine.title">Wine</h3>
-          <span class="text-cream/35 text-[10px] uppercase tracking-widest-2">III.</span>
-        </div>
-        <div class="space-y-6">
-          <div class="menu-row">
-            <span class="menu-num">3.1</span>
-            <p class="font-serif text-xl text-cream" data-i18n="menu.wine.list">Bottle list</p>
-            <span class="leader"></span>
-            <p class="font-serif text-sm text-gold/70 italic" data-i18n="menu.wine.ask">Hỏi nhân viên</p>
+      <!-- ── I. Signature ── -->
+      <div class="reveal border-t border-gold/20 pt-10 pb-12">
+        <div class="flex items-start gap-5 mb-9">
+          <span class="menu-section-num">I</span>
+          <div class="pt-2">
+            <p class="text-gold/50 text-[9px] uppercase tracking-widest-2 mb-1">Section I</p>
+            <h3 class="font-serif text-2xl md:text-3xl text-cream" data-i18n="menu.sig.title">Signature</h3>
           </div>
         </div>
+        <div class="space-y-5">
+          <div class="menu-row"><span class="menu-num">I.1</span><p class="font-serif text-xl text-cream">Prelude</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">190,000₫</p></div>
+          <div class="menu-row"><span class="menu-num">I.2</span><p class="font-serif text-xl text-cream">Proposition</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">220,000₫</p></div>
+          <div class="menu-row"><span class="menu-num">I.3</span><p class="font-serif text-xl text-cream">Silence</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">250,000₫</p></div>
+        </div>
       </div>
 
-      <!-- IV. Small Plates + V. Water -->
-      <div class="reveal space-y-12">
+      <!-- ── II. Classic Cocktail ── -->
+      <div class="reveal border-t border-gold/20 pt-10 pb-12">
+        <div class="flex items-start gap-5 mb-9">
+          <span class="menu-section-num">II</span>
+          <div class="pt-2">
+            <p class="text-gold/50 text-[9px] uppercase tracking-widest-2 mb-1">Section II</p>
+            <h3 class="font-serif text-2xl md:text-3xl text-cream" data-i18n="menu.classic.title">Classic Cocktail</h3>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-x-14 gap-y-5">
+          <div class="menu-row"><span class="menu-num">2.1</span><p class="font-serif text-xl text-cream">Mojito</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">190,000₫</p></div>
+          <div class="menu-row"><span class="menu-num">2.4</span><p class="font-serif text-xl text-cream">Margarita</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">210,000₫</p></div>
+          <div class="menu-row"><span class="menu-num">2.2</span><p class="font-serif text-xl text-cream">Old Fashioned</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">190,000₫</p></div>
+          <div class="menu-row"><span class="menu-num">2.5</span><p class="font-serif text-xl text-cream">Negroni</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">220,000₫</p></div>
+          <div class="menu-row"><span class="menu-num">2.3</span><p class="font-serif text-xl text-cream">Cosmopolitan</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">210,000₫</p></div>
+          <div class="menu-row"><span class="menu-num">2.6</span><p class="font-serif text-xl text-cream" data-i18n="menu.classic.other">Other classics</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">220,000₫</p></div>
+        </div>
+      </div>
+
+      <!-- ── III. Wine  +  IV. Small Plates ── -->
+      <div class="reveal border-t border-gold/20 pt-10 pb-12 grid md:grid-cols-2 gap-12 md:gap-16">
 
         <div>
-          <div class="flex items-end justify-between mb-8">
-            <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.plates.title">Small Plates</h3>
-            <span class="text-cream/35 text-[10px] uppercase tracking-widest-2">IV.</span>
+          <div class="flex items-start gap-5 mb-9">
+            <span class="menu-section-num">III</span>
+            <div class="pt-2">
+              <p class="text-gold/50 text-[9px] uppercase tracking-widest-2 mb-1">Section III</p>
+              <h3 class="font-serif text-2xl md:text-3xl text-cream" data-i18n="menu.wine.title">Wine</h3>
+            </div>
           </div>
-          <div class="space-y-6">
-            <div class="menu-row"><span class="menu-num">4.1</span><p class="font-serif text-xl text-cream" data-i18n="menu.snack">Snack</p><span class="leader"></span><p class="font-serif text-lg text-gold">80,000₫</p></div>
-            <div class="menu-row"><span class="menu-num">4.2</span><p class="font-serif text-xl text-cream" data-i18n="menu.cheese">Cheese bites</p><span class="leader"></span><p class="font-serif text-lg text-gold">90,000₫</p></div>
-            <div class="menu-row"><span class="menu-num">4.3</span><p class="font-serif text-xl text-cream" data-i18n="menu.nuts">Mixed Nuts</p><span class="leader"></span><p class="font-serif text-lg text-gold">100,000₫</p></div>
+          <div class="border-l-2 border-gold/25 pl-5">
+            <p class="font-serif text-2xl text-cream/85" data-i18n="menu.wine.list">Bottle list</p>
+            <p class="text-cream/45 text-sm italic mt-2 leading-relaxed" data-i18n="menu.wine.ask">Vui lòng hỏi nhân viên về danh sách tối nay</p>
           </div>
         </div>
 
         <div>
-          <div class="flex items-end justify-between mb-8">
-            <h3 class="font-serif text-3xl md:text-4xl text-gold" data-i18n="menu.water.title">Water</h3>
-            <span class="text-cream/35 text-[10px] uppercase tracking-widest-2">V.</span>
+          <div class="flex items-start gap-5 mb-9">
+            <span class="menu-section-num">IV</span>
+            <div class="pt-2">
+              <p class="text-gold/50 text-[9px] uppercase tracking-widest-2 mb-1">Section IV</p>
+              <h3 class="font-serif text-2xl md:text-3xl text-cream" data-i18n="menu.plates.title">Small Plates</h3>
+            </div>
           </div>
-          <div class="space-y-6">
-            <div class="menu-row"><span class="menu-num">5.1</span><p class="font-serif text-xl text-cream" data-i18n="menu.still">Still water</p><span class="leader"></span><p class="font-serif text-lg text-gold">80,000₫</p></div>
+          <div class="space-y-5">
+            <div class="menu-row"><span class="menu-num">4.1</span><p class="font-serif text-xl text-cream" data-i18n="menu.snack">Snack</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">80,000₫</p></div>
+            <div class="menu-row"><span class="menu-num">4.2</span><p class="font-serif text-xl text-cream" data-i18n="menu.cheese">Cheese bites</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">90,000₫</p></div>
+            <div class="menu-row"><span class="menu-num">4.3</span><p class="font-serif text-xl text-cream" data-i18n="menu.nuts">Mixed Nuts</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">100,000₫</p></div>
           </div>
         </div>
 
       </div>
+
+      <!-- ── V. Water ── -->
+      <div class="reveal border-t border-gold/20 pt-10 pb-12">
+        <div class="flex items-start gap-5 mb-9">
+          <span class="menu-section-num">V</span>
+          <div class="pt-2">
+            <p class="text-gold/50 text-[9px] uppercase tracking-widest-2 mb-1">Section V</p>
+            <h3 class="font-serif text-2xl md:text-3xl text-cream" data-i18n="menu.water.title">Water</h3>
+          </div>
+        </div>
+        <div class="space-y-5">
+          <div class="menu-row"><span class="menu-num">5.1</span><p class="font-serif text-xl text-cream" data-i18n="menu.still">Still water</p><span class="leader"></span><p class="font-serif text-xl text-gold font-light">80,000₫</p></div>
+        </div>
+      </div>
+
+      <div class="border-t border-gold/20"></div>
 
     </div>
 
-    <p class="text-center text-cream/50 text-[10px] uppercase tracking-widest-2 mt-20" data-i18n="menu.note">
+    <p class="text-center text-cream/40 text-[10px] uppercase tracking-widest-2 mt-10" data-i18n="menu.note">
       VAT &amp; Phí Dịch Vụ đã bao gồm · Chỉ phục vụ khách từ 18 tuổi trở lên
     </p>
   </div>
@@ -700,7 +713,7 @@ const T = {
     'menu.sub': 'Mỗi ly đều được cân nhắc. Cocktail, rượu vang và đồ ăn nhẹ.',
     'menu.sig.title': 'Signature',
     'menu.classic.title': 'Classic Cocktail', 'menu.classic.other': 'Other classics',
-    'menu.wine.title': 'Wine', 'menu.wine.list': 'Bottle list', 'menu.wine.ask': 'Hỏi nhân viên',
+    'menu.wine.title': 'Wine', 'menu.wine.list': 'Bottle list', 'menu.wine.ask': 'Vui lòng hỏi nhân viên về danh sách tối nay',
     'menu.plates.title': 'Small Plates',
     'menu.snack': 'Snack', 'menu.cheese': 'Cheese bites', 'menu.nuts': 'Mixed Nuts',
     'menu.water.title': 'Water', 'menu.still': 'Still water',
@@ -761,7 +774,7 @@ const T = {
     'menu.sub': 'Every pour is chosen with intention. Cocktails, wine and small plates.',
     'menu.sig.title': 'Signature',
     'menu.classic.title': 'Classic Cocktail', 'menu.classic.other': 'Other classics',
-    'menu.wine.title': 'Wine', 'menu.wine.list': 'Bottle list', 'menu.wine.ask': 'Ask your server',
+    'menu.wine.title': 'Wine', 'menu.wine.list': 'Bottle list', 'menu.wine.ask': "Ask your server for tonight's selection",
     'menu.plates.title': 'Small Plates',
     'menu.snack': 'Snack', 'menu.cheese': 'Cheese bites', 'menu.nuts': 'Mixed Nuts',
     'menu.water.title': 'Water', 'menu.still': 'Still water',
